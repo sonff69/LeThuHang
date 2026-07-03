@@ -71,7 +71,7 @@
             border-top: 2px solid #0284C7;
             border-l-2: 2px solid #0284C7;
         }
-        /* Premium Glowing Cards over White Background (Must be overflow-visible to allow popout) */
+        /* Premium Glowing Cards over White Background */
         .glowing-card {
             background: #FFFFFF;
             border: 2px solid #E2E8F0;
@@ -103,15 +103,15 @@
             color: #0369A1 !important;
             font-weight: 700;
         }
-        /* Absolute Character Popout Animation rules (origin-bottom keeps base locked to the bottom line) */
+        /* Absolute Character Popout (Origin bottom-right locks the base to bottom-right corner) */
         .char-popout {
-            transform-origin: bottom center;
-            filter: drop-shadow(0 10px 15px rgba(186, 230, 253, 0.6));
+            transform-origin: bottom right;
+            filter: drop-shadow(0 10px 15px rgba(186, 230, 253, 0.5));
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
         }
         .glowing-card:hover .char-popout {
-            transform: scale(1.1); /* Stretches upwards only, feet stay perfectly at bottom border */
-            filter: drop-shadow(0 15px 25px rgba(2, 132, 199, 0.45));
+            transform: scale(1.08); /* Scales up, head pops higher and slightly left, bottom-right remains locked */
+            filter: drop-shadow(0 15px 25px rgba(2, 132, 199, 0.4));
         }
     </style>
 </head>
@@ -275,30 +275,30 @@
                 </div>
 
                 <!-- Popout Characters Showcase on White Background -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6"> <!-- Added paddingTop so popouts don't overlap previous element -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
                     
                     <!-- Yoichi Isagi Card -->
                     <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[200px] md:min-h-[240px]">
-                        <div class="w-[60%] md:w-[65%] space-y-3 relative z-10">
+                        <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
                             <span class="text-[9px] font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-2 py-0.5 rounded">STRATEGIC THINKING</span>
                             <h3 class="font-serifClassic text-lg font-bold text-cuteText italic">Yoichi Isagi</h3>
                             <p class="text-[11px] text-gray-500 leading-relaxed">
                                 Người đồng hành hướng dẫn phương pháp **thích ứng** và **quy hoạch cấu trúc thư mục** đám mây khoa học nhất cho mọi môn học học đường.
                             </p>
                         </div>
-                        <img src="YoichiIsagi.png" alt="Isagi Yoichi" class="absolute bottom-0 right-0 md:right-4 h-[115%] md:h-[135%] max-h-[180px] md:max-h-[270px] object-contain object-bottom pointer-events-none z-20 char-popout">
+                        <img src="YoichiIsagi.png" alt="Isagi Yoichi" class="absolute bottom-0 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
                     </div>
 
                     <!-- Rin Itoshi Card -->
                     <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[200px] md:min-h-[240px]">
-                        <div class="w-[60%] md:w-[65%] space-y-3 relative z-10">
+                        <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
                             <span class="text-[9px] font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-2 py-0.5 rounded">ABSOLUTE PRECISION</span>
                             <h3 class="font-serifClassic text-lg font-bold text-cuteText italic">Rin Itoshi</h3>
                             <p class="text-[11px] text-gray-500 leading-relaxed">
                                 Người định hướng khả năng **truy vấn học thuật chuẩn xác** và **đánh giá nguồn tài liệu nghiêm ngặt** để loại bỏ mọi sai lệch thông tin.
                             </p>
                         </div>
-                        <img src="RinItoshi.png" alt="Rin Itoshi" class="absolute bottom-0 right-0 md:right-4 h-[115%] md:h-[135%] max-h-[180px] md:max-h-[270px] object-contain object-bottom pointer-events-none z-20 char-popout">
+                        <img src="RinItoshi.png" alt="Rin Itoshi" class="absolute bottom-0 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
                     </div>
 
                 </div>
@@ -319,11 +319,11 @@
 
                 <!-- SUBTAB CONTENT: TASK 1 (Quản lý tệp - Isagi Yoichi) -->
                 <div id="proj-task1" class="project-content block space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[260px]">
-                        <div class="w-[60%] md:w-[65%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-folder-tree mr-1.5"></i> STAGE 1: FILE SYSTEM</span>
                             <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Cấu trúc thư mục tối ưu và Quy tắc đặt tên</h3>
-                            <p class="text-xs text-gray-400">Người đồng hành tư duy: <strong>Isagi Yoichi</strong> - Quy hoạch dải ngân hà dữ liệu gọn gàng.</p>
+                            <p class="text-xs text-gray-400">Người đồng hành tư duy: <strong>Isagi Yoichi</strong> - Quy hoạch hệ thống dữ liệu gọn gàng.</p>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                                 <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl font-mono text-[10px] text-cuteText">
@@ -338,14 +338,14 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="YoichiIsagi.png" alt="Isagi Yoichi" class="absolute bottom-0 right-0 md:right-4 h-[115%] md:h-[135%] max-h-[180px] md:max-h-[270px] object-contain object-bottom pointer-events-none z-20 char-popout">
+                        <img src="YoichiIsagi.png" alt="Isagi Yoichi" class="absolute bottom-0 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
                     </div>
                 </div>
 
                 <!-- SUBTAB CONTENT: TASK 2 (Truy vấn học thuật - Rin Itoshi) -->
                 <div id="proj-task2" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[260px]">
-                        <div class="w-[60%] md:w-[65%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-magnifying-glass mr-1.5"></i> STAGE 2: SEARCH STRATEGY</span>
                             <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Truy vấn thông tin & Đánh giá nguồn học thuật</h3>
                             
@@ -370,14 +370,14 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="RinItoshi.png" alt="Rin Itoshi" class="absolute bottom-0 right-0 md:right-4 h-[115%] md:h-[135%] max-h-[180px] md:max-h-[270px] object-contain object-bottom pointer-events-none z-20 char-popout">
+                        <img src="RinItoshi.png" alt="Rin Itoshi" class="absolute bottom-0 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
                     </div>
                 </div>
 
                 <!-- SUBTAB CONTENT: TASK 3 (Prompt Engineering - Meguru Bachira) -->
                 <div id="proj-task3" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[260px]">
-                        <div class="w-[60%] md:w-[65%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-comment-dots mr-1.5"></i> STAGE 3: PROMPT ENGINEERING</span>
                             <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Kỹ thuật thiết kế câu lệnh hiệu quả</h3>
                             
@@ -392,14 +392,14 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="MeguruBachira.png" alt="Meguru Bachira" class="absolute bottom-0 right-0 md:right-4 h-[115%] md:h-[135%] max-h-[180px] md:max-h-[270px] object-contain object-bottom pointer-events-none z-20 char-popout">
+                        <img src="MeguruBachira.png" alt="Meguru Bachira" class="absolute bottom-0 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
                     </div>
                 </div>
 
                 <!-- SUBTAB CONTENT: TASK 4 (Cộng tác nhóm - Seishiro Nagi) -->
                 <div id="proj-task4" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[260px]">
-                        <div class="w-[60%] md:w-[65%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-users mr-1.5"></i> STAGE 4: ONLINE COLLABORATION</span>
                             <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Cộng tác trực tuyến & Quản trị nhóm</h3>
                             
@@ -412,18 +412,18 @@
                                 <div class="bg-brandLight p-2.5 rounded-xl border border-slate-200">
                                     <span class="text-green-600 font-cyberTech block mb-1">✓ HOÀN THÀNH</span>
                                     <p class="font-bold text-cuteText">Thiết lập kế hoạch họp nhóm đám mây</p>
-                                    <p class="text-green-600"><i class="fa-solid fa-circle-check"></i> Đã duyệt duyệt</p>
+                                    <p class="text-green-600"><i class="fa-solid fa-circle-check"></i> Đã phê duyệt</p>
                                 </div>
                             </div>
                         </div>
-                        <img src="SeishiroNagi.png" alt="Seishiro Nagi" class="absolute bottom-0 right-0 md:right-4 h-[115%] md:h-[135%] max-h-[180px] md:max-h-[270px] object-contain object-bottom pointer-events-none z-20 char-popout">
+                        <img src="SeishiroNagi.png" alt="Seishiro Nagi" class="absolute bottom-0 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
                     </div>
                 </div>
 
                 <!-- SUBTAB CONTENT: TASK 5 (Sáng tạo AI - Hyoma Chigiri) -->
                 <div id="proj-task5" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[260px]">
-                        <div class="w-[60%] md:w-[65%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> STAGE 5: GENERATIVE ART</span>
                             <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Sáng tạo nội dung số có trợ lực AI</h3>
                             
@@ -432,14 +432,14 @@
                                 <p class="text-gray-500 italic">"An elite female Chinese translator standing inside a futuristic soccer stadium styled like Blue Lock neon aesthetic, neon cyan holographic Chinese characters..."</p>
                             </div>
                         </div>
-                        <img src="HyomaChigiri.png" alt="Hyoma Chigiri" class="absolute bottom-0 right-0 md:right-4 h-[115%] md:h-[135%] max-h-[180px] md:max-h-[270px] object-contain object-bottom pointer-events-none z-20 char-popout">
+                        <img src="HyomaChigiri.png" alt="Hyoma Chigiri" class="absolute bottom-0 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
                     </div>
                 </div>
 
                 <!-- SUBTAB CONTENT: TASK 6 (Đạo đức AI - Jinpachi Ego) -->
                 <div id="proj-task6" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[260px]">
-                        <div class="w-[60%] md:w-[65%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-shield-halved mr-1.5"></i> STAGE 6: ETHICS & RESPONSIBILITY</span>
                             <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Cam kết Đạo đức sử dụng AI</h3>
                             
@@ -454,7 +454,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="JinpachiEgo.png" alt="Jinpachi Ego" class="absolute bottom-0 right-0 md:right-4 h-[115%] md:h-[135%] max-h-[180px] md:max-h-[270px] object-contain object-bottom pointer-events-none z-20 char-popout">
+                        <img src="JinpachiEgo.png" alt="Jinpachi Ego" class="absolute bottom-0 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
                     </div>
                 </div>
 
