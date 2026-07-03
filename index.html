@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Portfolio | Lê Thu Hằng - Cute Pastel Edition</title>
+    <title>Digital Portfolio | Lê Thu Hằng - Blue Lock Cute Pastel Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,12 +13,15 @@
                     colors: {
                         pastelBlueLight: '#F0F9FF', // sky-50
                         pastelBlueMedium: '#E0F2FE', // sky-100
+                        pastelBlueBorder: '#BAE6FD', // sky-200
                         pastelBlueDark: '#0284C7', // sky-600
+                        pastelBlueHeader: '#0369A1', // sky-700
                         pastelPinkLight: '#FDF2F8', // pink-50
                         pastelPinkMedium: '#FCE7F3', // pink-100
+                        pastelPinkBorder: '#FBCFE8', // pink-200
                         pastelPinkDark: '#DB2777', // pink-600
                         cuteText: '#1E293B', // slate-800
-                        cuteBorder: '#E2E8F0',
+                        panelBorder: '#CBD5E1'
                     },
                     fontFamily: {
                         quicksand: ['Quicksand', 'sans-serif'],
@@ -37,80 +40,109 @@
             background-color: #F0F9FF;
             color: #1E293B;
             font-family: 'Quicksand', sans-serif;
-            overflow-x: hidden;
+            background-image: radial-gradient(#BAE6FD 1px, transparent 1px);
+            background-size: 24px 24px;
         }
-        /* Cute custom scrollbar */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         ::-webkit-scrollbar-track {
             background: #F0F9FF;
         }
         ::-webkit-scrollbar-thumb {
-            background: #BAE6FD;
+            background: #7DD3FC;
             border-radius: 999px;
+            border: 2px solid #F0F9FF;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #7DD3FC;
+            background: #0284C7;
         }
-        /* Soft cute card shadow */
-        .cute-shadow {
-            box-shadow: 0 10px 25px -5px rgba(186, 230, 253, 0.5);
+        /* Rich Manga / Anime Panel Outline */
+        .manga-panel {
+            border: 4px solid #0369A1;
+            box-shadow: 6px 6px 0px #BAE6FD;
+            border-radius: 24px;
+            background-color: #FFFFFF;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .cute-shadow-sm {
-            box-shadow: 0 4px 15px -3px rgba(186, 230, 253, 0.3);
+        .manga-panel:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #7DD3FC;
         }
-        /* Active Tab styling */
+        /* Tab active state */
         .tab-active {
             background-color: #0284C7 !important;
             color: #FFFFFF !important;
-            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+            border-color: #0369A1 !important;
+            box-shadow: 4px 4px 0px #0369A1;
         }
         .subtab-active {
             background-color: #BAE6FD !important;
             color: #0369A1 !important;
+            border-color: #0284C7 !important;
             font-weight: 700;
         }
-        /* Floating bounce animation for cute vibe */
-        .float-animation {
-            animation: float 4s ease-in-out infinite;
+        /* Floating animations */
+        .float-soft {
+            animation: floatSoft 4s ease-in-out infinite;
         }
-        @keyframes float {
+        @keyframes floatSoft {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-10px); }
+        }
+        /* Character popout image container */
+        .char-popout-container {
+            position: relative;
+            height: 220px;
+            overflow: visible;
+        }
+        .char-popout-img {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 250px;
+            max-width: none;
+            filter: drop-shadow(4px 4px 0px #E0F2FE);
+            transition: all 0.3s ease;
+        }
+        .manga-panel:hover .char-popout-img {
+            transform: translateX(-50%) scale(1.05);
+            filter: drop-shadow(6px 6px 0px #BAE6FD);
         }
     </style>
 </head>
 <body class="relative min-h-screen pb-12">
 
-    <!-- Pastel Floating Sparkles Canvas -->
-    <canvas id="bubbleCanvas" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-60"></canvas>
+    <!-- Interactive Sparkles Canvas -->
+    <canvas id="sparkleCanvas" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-40"></canvas>
 
     <!-- Header Section -->
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-pastelBlueMedium/50 transition-all duration-300">
+    <header class="bg-white border-b-4 border-pastelBlueHeader sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-pastelBlueMedium rounded-full flex items-center justify-center float-animation">
-                    <i class="fa-solid fa-cloud text-pastelBlueDark text-2xl"></i>
+                <div class="w-12 h-12 bg-pastelBlueMedium border-2 border-pastelBlueHeader rounded-full flex items-center justify-center float-soft">
+                    <i class="fa-solid fa-futbol text-pastelBlueHeader text-2xl animate-spin" style="animation-duration: 20s;"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-xl tracking-wide text-pastelBlueDark">
-                        EGOIST <span class="text-pastelPinkDark">✿</span> PORTFOLIO
+                    <h1 class="font-bold text-2xl tracking-wide text-pastelBlueHeader">
+                        BLUE LOCK <span class="text-pastelPinkDark">✿</span> STRIKER PORTFOLIO
                     </h1>
-                    <p class="text-xs text-gray-500 tracking-wider">Hành trình Công nghệ số của Thu Hằng</p>
+                    <p class="text-xs text-gray-500 font-bold tracking-widest">HÀNH TRÌNH TỰ ĐỊNH DANH BẢN NGÃ CỦA LÊ THU HẰNG</p>
                 </div>
             </div>
             
-            <!-- Cute Navigation Menu -->
-            <nav class="flex gap-2">
-                <button onclick="switchTab('home')" id="tab-home" class="px-5 py-2.5 text-sm font-semibold text-pastelBlueDark bg-white border border-pastelBlueMedium rounded-full hover:bg-pastelBlueLight transition-all duration-300 tab-active">
-                    <i class="fa-solid fa-heart mr-1.5 text-pastelPinkDark"></i>Giới thiệu
+            <!-- Cute Pastel Navigation -->
+            <nav class="flex gap-2 bg-pastelBlueLight p-1 rounded-full border-2 border-pastelBlueBorder">
+                <button onclick="switchTab('home')" id="tab-home" class="px-5 py-2 text-sm font-bold text-pastelBlueHeader rounded-full hover:bg-white transition-all tab-active">
+                    <i class="fa-solid fa-house mr-1.5"></i>Giới thiệu
                 </button>
-                <button onclick="switchTab('projects')" id="tab-projects" class="px-5 py-2.5 text-sm font-semibold text-pastelBlueDark bg-white border border-pastelBlueMedium rounded-full hover:bg-pastelBlueLight transition-all duration-300">
-                    <i class="fa-solid fa-star mr-1.5 text-yellow-400"></i>Dự án học tập
+                <button onclick="switchTab('projects')" id="tab-projects" class="px-5 py-2 text-sm font-bold text-pastelBlueHeader rounded-full hover:bg-white transition-all">
+                    <i class="fa-solid fa-cubes mr-1.5"></i>Nhiệm vụ học tập
                 </button>
-                <button onclick="switchTab('reflection')" id="tab-reflection" class="px-5 py-2.5 text-sm font-semibold text-pastelBlueDark bg-white border border-pastelBlueMedium rounded-full hover:bg-pastelBlueLight transition-all duration-300">
-                    <i class="fa-solid fa-feather mr-1.5 text-pastelBlueDark"></i>Tổng kết & Suy ngẫm
+                <button onclick="switchTab('reflection')" id="tab-reflection" class="px-5 py-2 text-sm font-bold text-pastelBlueHeader rounded-full hover:bg-white transition-all">
+                    <i class="fa-solid fa-brain mr-1.5"></i>Tổng kết & Suy ngẫm
                 </button>
             </nav>
         </div>
@@ -119,97 +151,101 @@
     <!-- Main Content Container -->
     <main class="max-w-7xl mx-auto px-4 mt-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
         
-        <!-- Left Column: Student Cute Profile Card -->
+        <!-- Left Column: Richly Decorated Student Profile -->
         <aside class="lg:col-span-1 flex flex-col gap-6">
-            <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 relative overflow-hidden cute-shadow">
-                
-                <!-- Cute Cloud Pattern Decoration -->
-                <div class="absolute -right-8 -top-8 w-24 h-24 bg-pastelBlueMedium/20 rounded-full blur-xl"></div>
-                <div class="absolute -left-6 -bottom-6 w-20 h-20 bg-pastelPinkMedium/20 rounded-full blur-lg"></div>
-                
-                <!-- Avatar and Title -->
-                <div class="flex flex-col items-center text-center relative z-10">
+            
+            <!-- Student Profile Card with Chigiri Overlay Decoration -->
+            <div class="manga-panel p-6 relative overflow-visible">
+                <div class="flex flex-col items-center text-center">
                     <div class="relative mb-4">
-                        <div class="w-28 h-28 rounded-full bg-gradient-to-tr from-pastelBlueMedium to-pastelPinkMedium p-1 shadow-inner">
-                            <div class="w-full h-full bg-white rounded-full flex items-center justify-center overflow-hidden">
-                                <!-- Chibi Initial Avatar -->
-                                <span class="text-3xl font-bold text-pastelBlueDark">LTH ʚϊɞ</span>
+                        <div class="w-28 h-28 rounded-full border-4 border-pastelBlueHeader p-1 bg-white shadow-md">
+                            <div class="w-full h-full bg-pastelBlueMedium rounded-full flex items-center justify-center overflow-hidden">
+                                <!-- Initial avatar representation -->
+                                <span class="text-3xl font-black text-pastelBlueHeader">LTH ʚϊɞ</span>
                             </div>
                         </div>
-                        <span class="absolute -bottom-1 -right-1 bg-pastelPinkMedium text-pastelPinkDark text-[10px] font-bold px-2.5 py-1 rounded-full border border-white">STRIKER</span>
+                        <span class="absolute -bottom-1 -right-1 bg-pastelPinkDark text-white text-[10px] font-bold px-3 py-1 rounded-full border-2 border-white">EGOIST</span>
                     </div>
                     
                     <h2 class="font-bold text-xl text-cuteText">Lê Thu Hằng</h2>
-                    <p class="text-xs text-pastelBlueDark font-medium tracking-wide mt-1">Học giả Ngôn ngữ Trung Quốc 🇨🇳</p>
-                    <div class="w-full h-[2px] bg-pastelBlueLight my-4"></div>
+                    <p class="text-xs text-pastelBlueDark font-bold tracking-wide mt-1">Ngành Ngôn ngữ & VH Trung Quốc</p>
+                    <div class="w-full h-1 bg-pastelBlueBorder my-4 rounded-full"></div>
                 </div>
 
-                <!-- Personal Specs -->
-                <div class="space-y-3 text-sm">
+                <!-- Academic Specs -->
+                <div class="space-y-3 text-sm font-medium">
                     <div class="flex justify-between">
-                        <span class="text-gray-400 font-semibold">Mã số SV:</span>
+                        <span class="text-gray-400">Mã số SV:</span>
                         <span class="text-cuteText font-mono font-bold">25041630</span>
                     </div>
                     <div class="flex justify-between">
-                        <span class="text-gray-400 font-semibold">Ngành học:</span>
-                        <span class="text-cuteText font-medium text-right">Ngôn ngữ & VH Trung Quốc</span>
+                        <span class="text-gray-400">Trường:</span>
+                        <span class="text-cuteText">ULIS - ĐHQGHN</span>
                     </div>
                     <div class="flex justify-between">
-                        <span class="text-gray-400 font-semibold">Trường học:</span>
-                        <span class="text-cuteText font-medium text-right">ĐH Ngoại ngữ - ĐHQGHN</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-400 font-semibold">Học phần:</span>
-                        <span class="text-pastelBlueDark font-bold text-right">Công nghệ số & AI</span>
-                    </div>
-                </div>
-
-                <div class="w-full h-[2px] bg-pastelBlueLight my-4"></div>
-
-                <!-- Cute Chibi Stat Meters -->
-                <div class="space-y-3">
-                    <h3 class="text-xs font-bold text-pastelPinkDark tracking-wider"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i>CHIBI SKILLS</h3>
-                    <!-- Skill 1 -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <span class="text-gray-500 font-medium">Tổ chức tệp tin (Isagi style)</span>
-                            <span class="text-pastelBlueDark font-bold">90%</span>
-                        </div>
-                        <div class="w-full bg-pastelBlueLight h-2 rounded-full overflow-hidden">
-                            <div class="bg-pastelBlueMedium h-full rounded-full" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <!-- Skill 2 -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <span class="text-gray-500 font-medium">Truy vấn học thuật (Rin style)</span>
-                            <span class="text-pastelBlueDark font-bold">95%</span>
-                        </div>
-                        <div class="w-full bg-pastelBlueLight h-2 rounded-full overflow-hidden">
-                            <div class="bg-sky-400 h-full rounded-full" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <!-- Skill 3 -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <span class="text-gray-500 font-medium">Viết Prompt (Bachira style)</span>
-                            <span class="text-pastelPinkDark font-bold">92%</span>
-                        </div>
-                        <div class="w-full bg-pastelPinkLight h-2 rounded-full overflow-hidden">
-                            <div class="bg-pastelPinkMedium h-full rounded-full" style="width: 92%"></div>
-                        </div>
+                        <span class="text-gray-400">Học phần:</span>
+                        <span class="text-pastelBlueHeader font-bold">Công nghệ số & AI</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Pastel Mascot Card -->
-            <div class="bg-white border border-pastelBlueMedium rounded-3xl p-4 relative overflow-hidden cute-shadow-sm flex items-center gap-3">
-                <div class="w-12 h-12 bg-pastelBlueLight rounded-full flex items-center justify-center text-xl shrink-0">
-                    ⚽
+            <!-- INTERACTIVE CHARACTER DECK (Sticker Collector Pack) -->
+            <div class="manga-panel p-5 relative overflow-hidden">
+                <div class="absolute -right-8 -top-8 w-20 h-20 bg-pastelPinkMedium/30 rounded-full blur-xl"></div>
+                <h3 class="text-sm font-bold text-pastelBlueHeader mb-4"><i class="fa-solid fa-id-badge mr-2"></i>BỘ SƯU TẬP THẺ NHÂN VẬT</h3>
+                
+                <div class="grid grid-cols-2 gap-3" id="character-deck">
+                    <!-- Isagi -->
+                    <div onclick="selectCharacter('isagi')" class="cursor-pointer border-2 border-pastelBlueBorder hover:border-pastelBlueDark p-2 rounded-xl text-center bg-pastelBlueLight/50 hover:bg-pastelBlueMedium/40 transition-all">
+                        <span class="text-xl">🌱</span>
+                        <p class="text-[10px] font-bold text-cuteText mt-1">Yoichi Isagi</p>
+                    </div>
+                    <!-- Rin -->
+                    <div onclick="selectCharacter('rin')" class="cursor-pointer border-2 border-pastelBlueBorder hover:border-pastelBlueDark p-2 rounded-xl text-center bg-pastelBlueLight/50 hover:bg-pastelBlueMedium/40 transition-all">
+                        <span class="text-xl">❄️</span>
+                        <p class="text-[10px] font-bold text-cuteText mt-1">Rin Itoshi</p>
+                    </div>
+                    <!-- Bachira -->
+                    <div onclick="selectCharacter('bachira')" class="cursor-pointer border-2 border-pastelBlueBorder hover:border-pastelBlueDark p-2 rounded-xl text-center bg-pastelBlueLight/50 hover:bg-pastelBlueMedium/40 transition-all">
+                        <span class="text-xl">🦊</span>
+                        <p class="text-[10px] font-bold text-cuteText mt-1">Meguru Bachira</p>
+                    </div>
+                    <!-- Nagi -->
+                    <div onclick="selectCharacter('nagi')" class="cursor-pointer border-2 border-pastelBlueBorder hover:border-pastelBlueDark p-2 rounded-xl text-center bg-pastelBlueLight/50 hover:bg-pastelBlueMedium/40 transition-all">
+                        <span class="text-xl">💤</span>
+                        <p class="text-[10px] font-bold text-cuteText mt-1">Seishiro Nagi</p>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="text-xs font-bold text-pastelBlueDark">LỜI NHẮC CỦA EGO JINPACHI:</h4>
-                    <p class="text-[11px] text-gray-500 italic mt-0.5">"Đừng lười biếng tư duy! Hãy biến AI thành mảnh ghép hoàn hảo cho bản ngã của bạn."</p>
+
+                <!-- Interactive Display Card -->
+                <div id="character-display" class="mt-4 p-3 bg-pastelBlueLight rounded-xl border border-pastelBlueBorder text-center transition-all">
+                    <p class="text-xs font-bold text-pastelBlueDark" id="display-name">Chọn một nhân vật</p>
+                    <p class="text-[10px] text-gray-500 italic mt-1" id="display-quote">để xem vũ khí độc quyền của họ!</p>
+                </div>
+            </div>
+
+            <!-- Egoist Status Radar (Pastel progress bars) -->
+            <div class="manga-panel p-5">
+                <h3 class="text-xs font-bold text-pastelPinkDark tracking-wider mb-4"><i class="fa-solid fa-chart-line mr-2"></i>EGOIST RADAR SPECS</h3>
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-500 font-medium">Linguistic Logic (Ngữ pháp)</span>
+                            <span class="text-pastelBlueHeader font-bold">95%</span>
+                        </div>
+                        <div class="w-full bg-pastelBlueLight h-2.5 rounded-full border border-pastelBlueBorder overflow-hidden">
+                            <div class="bg-pastelBlueDark h-full rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-500 font-medium">AI Prompting (Thiết kế lệnh)</span>
+                            <span class="text-pastelPinkDark font-bold">92%</span>
+                        </div>
+                        <div class="w-full bg-pastelPinkLight h-2.5 rounded-full border border-pastelPinkBorder overflow-hidden">
+                            <div class="bg-pastelPinkDark h-full rounded-full" style="width: 92%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -219,82 +255,60 @@
 
             <!-- ================= TAB: GIỚI THIỆU (HOME) ================= -->
             <div id="section-home" class="tab-content block space-y-6">
-                <!-- Soft Cloud Welcome Banner -->
-                <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 relative overflow-hidden cute-shadow">
-                    <div class="absolute right-4 bottom-4 opacity-15 pointer-events-none text-7xl">
-                        ☁️
-                    </div>
-                    <span class="text-xs font-bold text-pastelBlueDark bg-pastelBlueLight px-3 py-1 rounded-full">Stage 1: Lock-on!</span>
-                    <h2 class="text-2xl font-bold text-cuteText mt-3 mb-4">
-                        Chào mừng đến với Thế Giới <span class="text-pastelBlueDark">Công Nghệ Số</span> của Hằng
-                    </h2>
+                
+                <!-- Giant Rich Collage Banner Card (Blue Lock Team Showcase) -->
+                <div class="manga-panel p-6 relative overflow-hidden bg-gradient-to-r from-pastelBlueLight via-white to-pastelBlueMedium">
+                    <div class="absolute -right-16 -top-16 w-48 h-48 bg-pastelBlueBorder/30 rounded-full blur-3xl"></div>
+                    <span class="text-xs font-bold text-pastelBlueHeader bg-pastelBlueMedium border border-pastelBlueHeader/30 px-3 py-1 rounded-full">BLUE LOCK ACADEMY</span>
+                    <h2 class="text-3xl font-black text-pastelBlueHeader mt-3 mb-4">KHAI PHÁ BẢN NGÃ <span class="text-pastelPinkDark">✿</span> CHINH PHỤC CÔNG NGHỆ</h2>
                     <p class="text-gray-600 leading-relaxed text-sm">
-                        Chào các bạn! Mình là Lê Thu Hằng, một người có đam mê to lớn với ngôn ngữ và văn hoá xứ Trung. Chào mừng bạn ghé thăm cuốn sổ tay số (Digital Portfolio) của mình! 
-                        Lấy cảm hứng từ tinh thần nỗ lực bứt phá để tìm ra phiên bản độc nhất trong bộ anime bóng đá nổi tiếng <strong>Blue Lock</strong>, mình đã biến hành trình học tập học phần "Nhập môn Công nghệ số và Ứng dụng AI" thành một chuyến phiêu lưu lý thú. Tại đây, mình kết hợp các kiến thức ngôn ngữ học với năng lực AI để rèn luyện những kỹ năng công nghệ bổ ích cho sự nghiệp tương lai.
+                        Chào các bạn! Mình là <strong>Lê Thu Hằng</strong>, sinh viên chuyên ngành Ngôn ngữ và Văn hoá Trung Quốc tại trường Đại học Ngoại ngữ - ĐHQGHN. Đây là cuốn <strong>Digital Portfolio</strong> nơi ghi dấu hành trình mình dấn thân và làm quen với làn sóng công nghệ số, dưới sự đồng hành của tinh thần "Egoist" đầy nhiệt huyết từ bộ phim hoạt hình bóng đá nổi tiếng <strong>Blue Lock</strong>.
                     </p>
                 </div>
 
-                <!-- Cute Goals and Objectives Grid -->
+                <!-- Rich Blue Lock Character Introduction Collage Panel (NOT MINIMAL) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Target Goals -->
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-5 hover:border-pastelPinkDark transition-all duration-300 cute-shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-pastelPinkLight flex items-center justify-center text-pastelPinkDark">
-                                <i class="fa-solid fa-heart-crack text-lg"></i>
-                            </div>
-                            <h3 class="font-bold text-cuteText">MỤC TIÊU CỦA MÌNH</h3>
+                    <!-- Isagi Yoichi Panel Card -->
+                    <div class="manga-panel p-5 relative overflow-hidden flex flex-col md:flex-row gap-4">
+                        <div class="w-full md:w-2/3 space-y-2 relative z-10">
+                            <span class="text-[10px] font-black text-pastelBlueHeader bg-pastelBlueLight px-2 py-0.5 rounded-full">ACE STRIKER</span>
+                            <h3 class="text-lg font-bold text-cuteText">Yoichi Isagi</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed">
+                                Đại diện cho <strong>vũ khí thích ứng</strong> và <strong>kiến tạo cấu trúc thư mục</strong>. Isagi hướng dẫn cách tổ chức dữ liệu khoa học, giúp người học định vị chuẩn xác tài nguyên như cách anh nhìn thấu bản đồ sân bóng.
+                            </p>
                         </div>
-                        <ul class="space-y-3 text-xs text-gray-600">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-heart text-pastelPinkDark mt-1 text-[10px]"></i>
-                                <span>Làm quen và ứng dụng thành thạo các mô hình ngôn ngữ lớn để hỗ trợ phân tích, dịch thuật văn học Trung Quốc cổ đại và hiện đại.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-heart text-pastelPinkDark mt-1 text-[10px]"></i>
-                                <span>Học cách tổ chức dữ liệu cá nhân thật ngăn nắp và khoa học, tăng tốc hiệu suất làm việc nhóm thông qua các nền tảng trực tuyến.</span>
-                            </li>
-                        </ul>
+                        <!-- Absolute popout character sheet -->
+                        <div class="w-full md:w-1/3 char-popout-container">
+                            <img src="https://static.wikia.nocookie.net/bluelock/images/9/9d/Yoichi_Isagi_uniform_anime_design.png/revision/latest" alt="Isagi Yoichi" class="char-popout-img">
+                        </div>
                     </div>
 
-                    <!-- Portfolio's Role -->
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-5 hover:border-pastelBlueDark transition-all duration-300 cute-shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-pastelBlueLight flex items-center justify-center text-pastelBlueDark">
-                                <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
-                            </div>
-                            <h3 class="font-bold text-cuteText">Ý NGHĨA PORTFOLIO</h3>
+                    <!-- Meguru Bachira Panel Card -->
+                    <div class="manga-panel p-5 relative overflow-hidden flex flex-col md:flex-row gap-4">
+                        <div class="w-full md:w-2/3 space-y-2 relative z-10">
+                            <span class="text-[10px] font-black text-pastelPinkDark bg-pastelPinkLight px-2 py-0.5 rounded-full">DRIBBLING GENIUS</span>
+                            <h3 class="text-lg font-bold text-cuteText">Meguru Bachira</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed">
+                                Đại diện cho <strong>sự bay bổng sáng tạo</strong> và <strong>nghệ thuật kỹ thuật viết prompt</strong>. Bachira giúp giải phóng con quái vật AI, đưa ra những câu lệnh mang tính đột phá và giàu trí tưởng tượng nghệ thuật.
+                            </p>
                         </div>
-                        <ul class="space-y-3 text-xs text-gray-600">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-star text-pastelBlueDark mt-1 text-[10px]"></i>
-                                <span><strong>Hệ thống hóa học tập:</strong> Lưu trữ tất cả thành phẩm bài tập nhỏ từ cơ bản đến phức tạp trong suốt kỳ học một cách đáng yêu.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-star text-pastelBlueDark mt-1 text-[10px]"></i>
-                                <span><strong>Minh chứng năng lực:</strong> Thể hiện tư duy phân tích sâu sắc, quy trình làm việc cẩn trọng và tôn trọng đạo đức số.</span>
-                            </li>
-                        </ul>
+                        <div class="w-full md:w-1/3 char-popout-container">
+                            <img src="https://static.wikia.nocookie.net/bluelock/images/5/54/Meguru_Bachira_uniform_anime_design.png/revision/latest" alt="Meguru Bachira" class="char-popout-img">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Blue Lock Chemical Reaction - Cute Version -->
-                <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 cute-shadow-sm">
-                    <h3 class="text-sm font-bold text-center text-pastelBlueDark tracking-widest mb-4">✨ CÔNG THỨC KHAI MỞ NĂNG LỰC SỐ ✨</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                        <div class="p-4 bg-pastelBlueLight/50 rounded-2xl border border-pastelBlueMedium">
-                            <div class="text-xl mb-1">📚</div>
-                            <div class="font-bold text-pastelBlueDark text-xs">Vũ khí cốt lõi</div>
-                            <p class="text-[11px] text-gray-500 mt-1">Đam mê ngôn ngữ và văn hoá Trung Quốc sâu sắc.</p>
+                <!-- Learning Objectives and Orientation -->
+                <div class="manga-panel p-6">
+                    <h3 class="font-bold text-pastelBlueHeader text-base mb-4"><i class="fa-solid fa-compass mr-2"></i>ĐỊNH HƯỚNG VÀ MỤC TIÊU HỌC TẬP CỦA HẰNG</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-gray-600">
+                        <div class="p-4 bg-pastelBlueLight/50 rounded-2xl border-2 border-pastelBlueBorder/60">
+                            <h4 class="font-bold text-pastelBlueHeader text-sm mb-2">📚 Chuyên ngành Ngoại Ngữ</h4>
+                            <p>Phục vụ công tác dịch thuật, phân tích tác phẩm văn học Trung Quốc thông qua sự trợ lực mạnh mẽ của AI biên dịch thông minh.</p>
                         </div>
-                        <div class="p-4 bg-pastelPinkLight/50 rounded-2xl border border-pastelPinkMedium">
-                            <div class="text-xl mb-1">🤖</div>
-                            <div class="font-bold text-pastelPinkDark text-xs">Chất xúc tác</div>
-                            <p class="text-[11px] text-gray-500 mt-1">Các kỹ năng số, AI tạo sinh và quản lý đám mây.</p>
-                        </div>
-                        <div class="p-4 bg-white rounded-2xl border border-pastelBlueDark/30">
-                            <div class="text-xl mb-1">👑</div>
-                            <div class="font-bold text-pastelBlueDark text-xs">Phản ứng hoàn hảo</div>
-                            <p class="text-[11px] text-cuteText font-medium mt-1">Trở thành "Striker" đa năng trong thế giới hội nhập số.</p>
+                        <div class="p-4 bg-pastelPinkLight/50 rounded-2xl border-2 border-pastelPinkBorder/60">
+                            <h4 class="font-bold text-pastelPinkDark text-sm mb-2">⚡ Kỹ năng Công nghệ số</h4>
+                            <p>Không ngừng trau dồi các mô hình số hóa đám mây, bảo mật dữ liệu học tập cá nhân và tối ưu hóa năng suất hoạt động làm việc nhóm.</p>
                         </div>
                     </div>
                 </div>
@@ -302,59 +316,50 @@
 
             <!-- ================= TAB: DỰ ÁN HỌC TẬP (PROJECTS) ================= -->
             <div id="section-projects" class="tab-content hidden space-y-6">
-                <!-- Pastel Horizontal Sub-nav for Projects -->
-                <div class="bg-white border border-pastelBlueMedium rounded-3xl p-3 flex flex-wrap gap-2 justify-center cute-shadow-sm">
-                    <button onclick="switchProjectSubtab('task1')" id="subtab-task1" class="px-4 py-2 text-xs font-bold text-gray-500 hover:text-pastelBlueDark rounded-full transition-all subtab-active">Nhiệm vụ 1</button>
-                    <button onclick="switchProjectSubtab('task2')" id="subtab-task2" class="px-4 py-2 text-xs font-bold text-gray-500 hover:text-pastelBlueDark rounded-full transition-all">Nhiệm vụ 2</button>
-                    <button onclick="switchProjectSubtab('task3')" id="subtab-task3" class="px-4 py-2 text-xs font-bold text-gray-500 hover:text-pastelBlueDark rounded-full transition-all">Nhiệm vụ 3</button>
-                    <button onclick="switchProjectSubtab('task4')" id="subtab-task4" class="px-4 py-2 text-xs font-bold text-gray-500 hover:text-pastelBlueDark rounded-full transition-all">Nhiệm vụ 4</button>
-                    <button onclick="switchProjectSubtab('task5')" id="subtab-task5" class="px-4 py-2 text-xs font-bold text-gray-500 hover:text-pastelBlueDark rounded-full transition-all">Nhiệm vụ 5</button>
-                    <button onclick="switchProjectSubtab('task6')" id="subtab-task6" class="px-4 py-2 text-xs font-bold text-gray-500 hover:text-pastelBlueDark rounded-full transition-all">Nhiệm vụ 6</button>
+                
+                <!-- Sub-tabs Navigation -->
+                <div class="manga-panel p-3 flex flex-wrap gap-2 justify-center bg-pastelBlueLight">
+                    <button onclick="switchProjectSubtab('task1')" id="subtab-task1" class="px-4 py-2 text-xs font-bold text-pastelBlueHeader rounded-full border-2 border-transparent transition-all subtab-active">Nhiệm vụ 1</button>
+                    <button onclick="switchProjectSubtab('task2')" id="subtab-task2" class="px-4 py-2 text-xs font-bold text-pastelBlueHeader rounded-full border-2 border-transparent transition-all">Nhiệm vụ 2</button>
+                    <button onclick="switchProjectSubtab('task3')" id="subtab-task3" class="px-4 py-2 text-xs font-bold text-pastelBlueHeader rounded-full border-2 border-transparent transition-all">Nhiệm vụ 3</button>
+                    <button onclick="switchProjectSubtab('task4')" id="subtab-task4" class="px-4 py-2 text-xs font-bold text-pastelBlueHeader rounded-full border-2 border-transparent transition-all">Nhiệm vụ 4</button>
+                    <button onclick="switchProjectSubtab('task5')" id="subtab-task5" class="px-4 py-2 text-xs font-bold text-pastelBlueHeader rounded-full border-2 border-transparent transition-all">Nhiệm vụ 5</button>
+                    <button onclick="switchProjectSubtab('task6')" id="subtab-task6" class="px-4 py-2 text-xs font-bold text-pastelBlueHeader rounded-full border-2 border-transparent transition-all">Nhiệm vụ 6</button>
                 </div>
 
                 <!-- SUBTAB CONTENT: TASK 1 (Quản lý tệp) -->
-                <div id="proj-task1" class="project-content block space-y-6 animate-fade">
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 cute-shadow">
-                        <!-- Blue Lock Character Sticker Decoration -->
-                        <div class="flex items-center gap-3 mb-4 bg-pastelBlueLight p-3 rounded-2xl border border-pastelBlueMedium/40">
-                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-lg shadow-sm">🌱</div>
-                            <div>
-                                <h4 class="text-xs font-bold text-pastelBlueDark">ISAGI YOICHI ĐỒNG HÀNH:</h4>
-                                <p class="text-[11px] text-gray-500">"Sắp xếp cấu trúc dữ liệu khoa học chính là cách tốt nhất để định vị mục tiêu rõ ràng!"</p>
+                <div id="proj-task1" class="project-content block space-y-6">
+                    <div class="manga-panel p-6">
+                        <!-- Large Character Popout Visual (Isagi) -->
+                        <div class="flex flex-col md:flex-row gap-6 items-center border-b-2 border-pastelBlueBorder pb-6 mb-6">
+                            <div class="w-full md:w-3/4 space-y-2">
+                                <span class="text-xs font-bold text-pastelBlueHeader bg-pastelBlueLight border border-pastelBlueBorder px-2.5 py-1 rounded-full"><i class="fa-solid fa-folder-tree mr-1.5"></i> NHIỆM VỤ 1</span>
+                                <h3 class="text-xl font-bold text-cuteText">Cấu trúc thư mục tối ưu và Quy tắc đặt tên khoa học</h3>
+                                <p class="text-xs text-gray-500">Người đồng hành thiết kế: <strong>Isagi Yoichi</strong> - Sử dụng vũ khí điều phối để kiến tạo hệ thống lưu trữ đám mây cho sinh viên ngoại ngữ.</p>
+                            </div>
+                            <div class="w-full md:w-1/4 char-popout-container" style="height: 180px;">
+                                <img src="https://static.wikia.nocookie.net/bluelock/images/9/9d/Yoichi_Isagi_uniform_anime_design.png/revision/latest" alt="Isagi Yoichi" class="char-popout-img" style="height: 200px;">
                             </div>
                         </div>
 
-                        <h3 class="text-lg font-bold text-cuteText mb-2">Thao tác cơ bản với Tệp tin và Thư mục</h3>
-                        <p class="text-xs text-gray-500 mb-6">Xây dựng hệ thống thư mục đám mây ngăn nắp phục vụ cho việc lưu trữ các môn học tại ULIS.</p>
-                        
+                        <!-- Content Layout -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Folder Tree Visualizer -->
-                            <div class="bg-pastelBlueLight/40 border border-pastelBlueMedium p-4 rounded-2xl font-medium text-xs space-y-1.5 text-gray-700">
-                                <div class="text-pastelBlueDark font-bold mb-3"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>CẤU TRÚC THƯ MỤC CỦA HẰNG:</div>
-                                <div class="flex items-center text-pastelBlueDark font-bold"><i class="fa-regular fa-folder-open mr-2 text-yellow-400"></i> ULIS_25041630_LeThuHang_Nhom02/</div>
+                            <div class="bg-pastelBlueLight/40 border-2 border-pastelBlueBorder p-4 rounded-2xl font-medium text-xs space-y-1.5 text-gray-700">
+                                <div class="text-pastelBlueHeader font-bold mb-3"><i class="fa-solid fa-network-wired mr-2"></i>BẢN ĐỒ THƯ MỤC CỦA THU HẰNG:</div>
+                                <div class="flex items-center text-pastelBlueHeader font-bold"><i class="fa-regular fa-folder-open mr-2 text-yellow-400"></i> ULIS_25041630_LeThuHang_Nhom02/</div>
                                 <div class="pl-4 flex items-center"><i class="fa-regular fa-folder mr-2 text-yellow-400"></i> 01_CoBan_TepTin/</div>
                                 <div class="pl-8 text-gray-500 flex items-center"><i class="fa-regular fa-file-word mr-2 text-blue-400"></i> BaoCao_ToiUu_File.docx</div>
                                 <div class="pl-8 text-gray-500 flex items-center"><i class="fa-regular fa-file-image mr-2 text-pastelPinkDark"></i> SoDo_ThuMuc_HeThong.png</div>
                                 
                                 <div class="pl-4 flex items-center"><i class="fa-regular fa-folder mr-2 text-yellow-400"></i> 02_TimKiem_HocThuat/</div>
                                 <div class="pl-8 text-gray-500 flex items-center"><i class="fa-regular fa-file-excel mr-2 text-green-500"></i> DanhGia_TaiLieu_NghienCuu.xlsx</div>
-                                
-                                <div class="pl-4 flex items-center"><i class="fa-regular fa-folder mr-2 text-yellow-400"></i> 03_Prompt_HieuQua/</div>
-                                <div class="pl-8 text-gray-500 flex items-center"><i class="fa-regular fa-file-pdf mr-2 text-red-400"></i> NhatKy_ThuNghiem_Prompt.pdf</div>
                             </div>
 
-                            <!-- Explanation card -->
                             <div class="space-y-4">
-                                <div class="p-4 bg-white rounded-2xl border border-pastelBlueMedium/60">
-                                    <h4 class="text-xs font-bold text-pastelBlueDark mb-1.5"><i class="fa-solid fa-folder-tree mr-1.5"></i>Tư duy thiết kế:</h4>
+                                <div class="p-4 bg-white rounded-2xl border-2 border-pastelBlueBorder">
+                                    <h4 class="text-xs font-bold text-pastelBlueHeader mb-1.5"><i class="fa-solid fa-puzzle-piece mr-1.5"></i>Tư duy tổ chức dữ liệu:</h4>
                                     <p class="text-[11px] text-gray-500 leading-relaxed">
-                                        Thư mục được đánh dấu thứ tự từ 01 đến 06 để luôn tự động xếp gọn gàng theo trình tự bài tập. Tên tệp tin không dùng dấu tiếng Việt, kết nối các từ bằng dấu gạch dưới "_" nhằm hạn chế tối đa việc bị lỗi hệ thống lưu trữ trực tuyến.
-                                    </p>
-                                </div>
-                                <div class="p-4 bg-white rounded-2xl border border-pastelPinkMedium/60">
-                                    <h4 class="text-xs font-bold text-pastelPinkDark mb-1.5"><i class="fa-solid fa-pencil mr-1.5"></i>Tối ưu quy tắc đặt tên:</h4>
-                                    <p class="text-[11px] text-gray-500 leading-relaxed">
-                                        Quy tắc đặt tên đồng bộ dạng <span class="font-mono bg-pastelPinkLight text-pastelPinkDark px-1 rounded">[STT_NhiemVu]_[Tên_Nhiệm_Vụ]_[Đặc_Tả]</span> giúp mình dễ dàng định vị tài liệu sau một vài tháng xem lại, thể hiện sự am hiểu chi tiết về tổ chức dữ liệu cá nhân.
+                                        Thư mục được chia theo số thứ tự tuyến tính 01-06 giúp tự sắp xếp gọn gàng theo tiến trình học tập. Việc này chứng tỏ năng lực xử lý, tổ chức dữ liệu cẩn trọng của sinh viên, đảm bảo tìm kiếm tài liệu chuẩn xác chỉ trong vài giây.
                                     </p>
                                 </div>
                             </div>
@@ -362,245 +367,206 @@
                     </div>
                 </div>
 
-                <!-- SUBTAB CONTENT: TASK 2 (Tìm kiếm thông tin) -->
+                <!-- SUBTAB CONTENT: TASK 2 (Truy vấn học thuật) -->
                 <div id="proj-task2" class="project-content hidden space-y-6">
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 cute-shadow">
-                        <!-- Character Banner -->
-                        <div class="flex items-center gap-3 mb-4 bg-pastelBlueLight p-3 rounded-2xl border border-pastelBlueMedium/40">
-                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-lg shadow-sm">❄️</div>
-                            <div>
-                                <h4 class="text-xs font-bold text-pastelBlueDark">ITOSHI RIN ĐỒNG HÀNH:</h4>
-                                <p class="text-[11px] text-gray-500">"Phân tích dữ liệu bằng logic sắc bén chính là chiếc chìa khóa để làm chủ cuộc chơi học thuật."</p>
+                    <div class="manga-panel p-6">
+                        <!-- Character Banner Overlay (Rin Itoshi) -->
+                        <div class="flex flex-col md:flex-row gap-6 items-center border-b-2 border-pastelBlueBorder pb-6 mb-6">
+                            <div class="w-full md:w-3/4 space-y-2">
+                                <span class="text-xs font-bold text-pastelBlueHeader bg-pastelBlueLight border border-pastelBlueBorder px-2.5 py-1 rounded-full"><i class="fa-solid fa-magnifying-glass mr-1.5"></i> NHIỆM VỤ 2</span>
+                                <h3 class="text-xl font-bold text-cuteText">Chiến lược truy vấn học thuật & Đánh giá nguồn</h3>
+                                <p class="text-xs text-gray-500">Người đồng hành thiết kế: <strong>Itoshi Rin</strong> - Ứng dụng óc phân tích sắc lạnh để tìm kiếm các báo cáo nghiên cứu AI dịch thuật.</p>
+                            </div>
+                            <div class="w-full md:w-1/4 char-popout-container" style="height: 180px;">
+                                <img src="https://static.wikia.nocookie.net/bluelock/images/5/5d/Rin_Itoshi_suit_anime_design.png/revision/latest" alt="Rin Itoshi" class="char-popout-img" style="height: 200px;">
                             </div>
                         </div>
 
-                        <h3 class="text-lg font-bold text-cuteText mb-2">Truy vấn học thuật & Đánh giá nguồn tài liệu</h3>
-                        <p class="text-xs text-gray-500 mb-6">Nghiên cứu học thuật về việc áp dụng trí tuệ nhân tạo (LLM) hỗ trợ dịch thuật văn học Trung Quốc sang tiếng Việt.</p>
-                        
-                        <!-- Search Operators visual -->
-                        <div class="bg-pastelBlueLight/40 p-4 rounded-2xl border border-pastelBlueMedium mb-6">
-                            <span class="text-[10px] font-bold text-pastelBlueDark uppercase tracking-wider block mb-1">Cú pháp truy vấn tối ưu (Sử dụng 4 toán tử nâng cao)</span>
-                            <div class="font-mono text-xs text-pastelBlueDark font-bold break-all p-2 bg-white rounded-xl border border-pastelBlueMedium/50">
-                                ("machine translation" OR "AI translation") AND "Chinese to Vietnamese" AND site:.edu AND filetype:pdf -site:wikipedia.org
+                        <!-- Content Layout -->
+                        <div class="space-y-6">
+                            <div class="bg-pastelBlueLight/40 p-4 rounded-2xl border-2 border-pastelBlueBorder">
+                                <span class="text-[10px] font-bold text-pastelBlueHeader uppercase tracking-wider block mb-1">Cú pháp truy vấn nâng cao chuyên nghiệp (Hơn 4 toán tử):</span>
+                                <div class="font-mono text-xs text-pastelBlueHeader font-bold break-all p-2 bg-white rounded-xl border border-pastelBlueBorder">
+                                    ("machine translation" OR "AI translation") AND "Chinese to Vietnamese" AND site:.edu AND filetype:pdf -site:wikipedia.org
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Source evaluation table (CRAAP) -->
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-xs border-collapse">
-                                <thead>
-                                    <tr class="bg-pastelBlueLight text-pastelBlueDark font-bold border-b border-pastelBlueMedium">
-                                        <th class="p-3">Nguồn tài liệu</th>
-                                        <th class="p-3">Tính cập nhật (Currency)</th>
-                                        <th class="p-3">Độ liên quan (Relevance)</th>
-                                        <th class="p-3">Thẩm quyền (Authority)</th>
-                                        <th class="p-3">Tính chính xác (Accuracy)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-pastelBlueLight/50 hover:bg-pastelBlueLight/20 text-gray-600">
-                                        <td class="p-3 font-semibold text-cuteText">Tạp chí KH ĐHQGHN (2024)</td>
-                                        <td class="p-3">Rất mới, cập nhật kịp thời xu hướng LLM.</td>
-                                        <td class="p-3">Rất cao, phục vụ trực tiếp đề tài học thuật.</td>
-                                        <td class="p-3">Ban nghiên cứu ngôn ngữ học trường ULIS.</td>
-                                        <td class="p-3">Số liệu khảo sát 200 mẫu văn bản thực tế.</td>
-                                    </tr>
-                                    <tr class="border-b border-pastelBlueLight/50 hover:bg-pastelBlueLight/20 text-gray-600">
-                                        <td class="p-3 font-semibold text-cuteText">ResearchGate Paper (2023)</td>
-                                        <td class="p-3">Khá mới, số liệu trong vòng 3 năm gần nhất.</td>
-                                        <td class="p-3">Liên quan đến cơ chế dịch thuật mạng neural.</td>
-                                        <td class="p-3">Các nhà nghiên cứu đại lục uy tín.</td>
-                                        <td class="p-3">Qua thẩm định hội đồng quốc tế.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <!-- CRAAP Evaluation table -->
+                            <div class="overflow-x-auto border-2 border-pastelBlueBorder rounded-2xl">
+                                <table class="w-full text-left text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-pastelBlueLight text-pastelBlueHeader font-bold border-b-2 border-pastelBlueBorder">
+                                            <th class="p-3">Nguồn tài liệu học thuật</th>
+                                            <th class="p-3">Cập nhật (C)</th>
+                                            <th class="p-3">Liên quan (R)</th>
+                                            <th class="p-3">Thẩm quyền (A)</th>
+                                            <th class="p-3">Chính xác (A)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-pastelBlueBorder/50 hover:bg-pastelBlueLight/20 text-gray-600">
+                                            <td class="p-3 font-semibold text-cuteText">Tạp chí Khoa học Ngoại ngữ (2024)</td>
+                                            <td class="p-3">Mới nhất, cập nhật năm 2024.</td>
+                                            <td class="p-3">Rất cao, nghiên cứu dịch thuật Trung-Việt.</td>
+                                            <td class="p-3">Nhóm chuyên gia đầu ngành ULIS.</td>
+                                            <td class="p-3">Khảo sát trên 200 ngữ liệu thực tế.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SUBTAB CONTENT: TASK 3 (Prompt hiệu quả) -->
+                <!-- SUBTAB CONTENT: TASK 3 (Kỹ thuật Prompt) -->
                 <div id="proj-task3" class="project-content hidden space-y-6">
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 cute-shadow">
-                        <!-- Character Banner -->
-                        <div class="flex items-center gap-3 mb-4 bg-pastelPinkLight p-3 rounded-2xl border border-pastelPinkMedium/40">
-                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-lg shadow-sm">🦊</div>
-                            <div>
-                                <h4 class="text-xs font-bold text-pastelPinkDark">BACHIRA MEGURU ĐỒNG HÀNH:</h4>
-                                <p class="text-[11px] text-gray-500">"Khai phá sức sáng tạo và tinh chỉnh chỉ dẫn thú vị sẽ đánh thức con quái vật AI bên trong bạn!"</p>
+                    <div class="manga-panel p-6">
+                        <!-- Character Banner Overlay (Meguru Bachira) -->
+                        <div class="flex flex-col md:flex-row gap-6 items-center border-b-2 border-pastelPinkBorder pb-6 mb-6">
+                            <div class="w-full md:w-3/4 space-y-2">
+                                <span class="text-xs font-bold text-pastelPinkDark bg-pastelPinkLight border border-pastelPinkBorder px-2.5 py-1 rounded-full"><i class="fa-solid fa-comment-dots mr-1.5"></i> NHIỆM VỤ 3</span>
+                                <h3 class="text-xl font-bold text-cuteText">Kỹ thuật viết câu chỉ dẫn (Prompt Engineering) hiệu quả</h3>
+                                <p class="text-xs text-gray-500">Người đồng hành thiết kế: <strong>Meguru Bachira</strong> - Đánh thức con quái vật AI bằng những câu lệnh sinh động, trực diện.</p>
+                            </div>
+                            <div class="w-full md:w-1/4 char-popout-container" style="height: 180px;">
+                                <img src="https://static.wikia.nocookie.net/bluelock/images/5/54/Meguru_Bachira_uniform_anime_design.png/revision/latest" alt="Meguru Bachira" class="char-popout-img" style="height: 200px;">
                             </div>
                         </div>
 
-                        <h3 class="text-lg font-bold text-cuteText mb-2">Viết Prompt tối ưu hóa cho Trí tuệ nhân tạo</h3>
-                        <p class="text-xs text-gray-500 mb-6">Ứng dụng kỹ thuật cấu trúc lệnh (Prompt Engineering) để yêu cầu AI phân tích và dịch thơ ca Trung Quốc cổ đại.</p>
-                        
+                        <!-- Content Layout -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Comparison Bubbles -->
                             <div class="space-y-4">
-                                <div class="bg-pastelPinkLight/40 border border-pastelPinkMedium p-4 rounded-2xl relative">
-                                    <span class="text-[10px] font-bold text-pastelPinkDark block mb-1">❌ Prompt Ban Đầu (Chưa tối ưu):</span>
-                                    <p class="text-xs text-gray-500 italic">"Hãy dịch bài thơ Tĩnh Dạ Tứ của Lý Bạch sang thơ tiếng Việt."</p>
-                                    <p class="text-[10px] text-gray-400 mt-2">↳ *Nhược điểm:* AI thường dịch sát nghĩa đen hoặc dịch thành thơ lục bát nhưng câu từ bị gượng ép, đánh mất hoàn toàn nhạc điệu cổ văn phong phú.</p>
+                                <div class="bg-pastelPinkLight/40 border-2 border-pastelPinkBorder p-4 rounded-2xl">
+                                    <span class="text-[10px] font-bold text-pastelPinkDark block mb-1">❌ Câu lệnh ban đầu (Mơ hồ):</span>
+                                    <p class="text-xs text-gray-500 italic">"Hãy dịch câu thành ngữ Vong dương bổ lao sang tiếng Việt."</p>
                                 </div>
-                                <div class="bg-pastelBlueLight/40 border border-pastelBlueMedium p-4 rounded-2xl relative">
-                                    <span class="text-[10px] font-bold text-pastelBlueDark block mb-1">✅ Prompt Tinh Chỉnh (Cực kỳ hiệu quả):</span>
+                                <div class="bg-pastelBlueLight/40 border-2 border-pastelBlueBorder p-4 rounded-2xl">
+                                    <span class="text-[10px] font-bold text-pastelBlueDark block mb-1">✅ Câu lệnh tinh chỉnh (Cực kỳ xuất sắc):</span>
                                     <p class="text-xs text-cuteText font-medium leading-relaxed">
-                                        "Với vai trò là một dịch giả thơ ca cổ Trung-Việt uy tín và am hiểu sâu sắc về phong vị Lý Bạch. Hãy dịch bài thơ 'Tĩnh Dạ Tứ' sang thể thơ song thất lục bát tiếng Việt. <br>
-                                        Yêu cầu đáp ứng:<br>
-                                        1. Giữ nguyên vần luật nhạc tính.<br>
-                                        2. Có phần phân tích ý nghĩa điển cố 'Sương đầu giường' bên dưới bản dịch chính thức.<br>
-                                        Hãy so sánh 3 phương án lựa chọn từ ngữ khác nhau để mình lựa chọn."
+                                        "Với vai trò là nhà dịch thuật văn học Trung-Việt xuất sắc có 20 năm kinh nghiệm nghiên cứu điển cố Trung Hoa. Hãy dịch và phân tích thành ngữ '亡羊补牢' (Vong dương bổ lao). Đưa ra nguồn gốc câu chuyện từ Chiến quốc sách và đặt 2 câu ví dụ ứng dụng trong lĩnh vực công nghệ số hiện đại."
                                     </p>
                                 </div>
                             </div>
 
-                            <!-- Analysis card -->
-                            <div class="p-4 bg-white border border-pastelBlueMedium rounded-3xl space-y-3">
-                                <h4 class="text-xs font-bold text-pastelBlueDark"><i class="fa-solid fa-gears mr-1.5"></i>Giải thích cơ chế hoạt động:</h4>
+                            <div class="p-4 bg-white border-2 border-pastelBlueBorder rounded-3xl space-y-3">
+                                <h4 class="text-xs font-bold text-pastelBlueDark"><i class="fa-solid fa-gears mr-1.5"></i>Cơ chế tác động sâu sắc của Prompt:</h4>
                                 <p class="text-[11px] text-gray-500 leading-relaxed">
-                                    Sự bứt phá chất lượng của prompt cải tiến dựa trên việc giới hạn <strong>Vùng ngữ cảnh (Context Constraints)</strong> của AI. Bằng việc phân vai cụ thể (Persona), chỉ định rõ ràng cấu trúc dữ liệu đầu ra và các từ cấm kỵ, AI sẽ lọc bỏ các kết quả đại trà trong cơ sở dữ liệu huấn luyện, tập trung dải phân bổ xác suất (Attention weight) vào các từ vựng mang hàm lượng nghệ thuật thơ ca dịch thuật cao nhất.
+                                    Khi cung cấp <strong>Vai trò chuyên gia (Role/Persona)</strong> và <strong>Bối cảnh cụ thể (Context Constraints)</strong>, hệ thống AI sẽ lọc bớt các kết quả đại trà trong dải huấn luyện, tập trung dải phân bổ xác suất (Attention weight) vào các từ vựng mang tính học thuật cao nhất, cải thiện chất lượng dịch vượt bậc.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SUBTAB CONTENT: TASK 4 (Cộng tác trực tuyến) -->
+                <!-- SUBTAB CONTENT: TASK 4 (Cộng tác nhóm) -->
                 <div id="proj-task4" class="project-content hidden space-y-6">
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 cute-shadow">
-                        <!-- Character Banner -->
-                        <div class="flex items-center gap-3 mb-4 bg-pastelBlueLight p-3 rounded-2xl border border-pastelBlueMedium/40">
-                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-lg shadow-sm">👑</div>
-                            <div>
-                                <h4 class="text-xs font-bold text-pastelBlueDark">REO & NAGI ĐỒNG HÀNH:</h4>
-                                <p class="text-[11px] text-gray-500">"Sự phối hợp ăn ý không kẽ hở giữa các mảnh ghép tài năng sẽ tạo ra bàn thắng quyết định!"</p>
+                    <div class="manga-panel p-6">
+                        <!-- Character Banner Overlay (Seishiro Nagi) -->
+                        <div class="flex flex-col md:flex-row gap-6 items-center border-b-2 border-pastelBlueBorder pb-6 mb-6">
+                            <div class="w-full md:w-3/4 space-y-2">
+                                <span class="text-xs font-bold text-pastelBlueHeader bg-pastelBlueLight border border-pastelBlueBorder px-2.5 py-1 rounded-full"><i class="fa-solid fa-users mr-1.5"></i> NHIỆM VỤ 4</span>
+                                <h3 class="text-xl font-bold text-cuteText">Quản trị Dự án và Kỹ năng làm việc nhóm số</h3>
+                                <p class="text-xs text-gray-500">Người đồng hành thiết kế: <strong>Seishiro Nagi</strong> - Chuyển hóa từ lối chơi cá nhân thiên tài thành sự phối hợp đồng đội ăn ý.</p>
+                            </div>
+                            <div class="w-full md:w-1/4 char-popout-container" style="height: 180px;">
+                                <img src="https://static.wikia.nocookie.net/bluelock/images/f/f1/Seishiro_Nagi_uniform_anime_design.png/revision/latest" alt="Seishiro Nagi" class="char-popout-img" style="height: 200px;">
                             </div>
                         </div>
 
-                        <h3 class="text-lg font-bold text-cuteText mb-2">Hợp tác số và Cộng tác nhóm trực tuyến</h3>
-                        <p class="text-xs text-gray-500 mb-6">Mô hình hóa quy trình phân vai tác vụ và quản trị kế hoạch nhóm trên bảng số hoá Kanban (Trello/Notion style).</p>
-                        
-                        <!-- Mini Pastel Kanban board -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                            <!-- Column 1 -->
-                            <div class="bg-pastelBlueLight/30 p-3 rounded-2xl border border-pastelBlueMedium/60">
-                                <span class="text-[10px] font-bold text-gray-500 block border-b border-pastelBlueMedium pb-2 mb-3">📋 CẦN LÀM (TO DO)</span>
-                                <div class="bg-white p-3 rounded-xl border border-pastelBlueMedium text-xs space-y-2">
-                                    <div class="flex justify-between">
-                                        <span class="text-[9px] font-bold text-pastelBlueDark bg-pastelBlueLight px-1.5 py-0.5 rounded-full">Task-03</span>
-                                    </div>
-                                    <p class="font-semibold text-cuteText text-[11px]">Tìm tài liệu nghiên cứu</p>
-                                    <p class="text-[9px] text-gray-400">Phụ trách: Bạn B</p>
+                        <!-- Kanban Board Content -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Column To Do -->
+                            <div class="bg-pastelBlueLight/30 p-3 rounded-2xl border-2 border-pastelBlueBorder">
+                                <span class="text-[10px] font-bold text-gray-500 block border-b border-pastelBlueBorder pb-2 mb-3">📋 CHUẨN BỊ (TO DO)</span>
+                                <div class="bg-white p-3 rounded-xl border border-pastelBlueBorder text-xs space-y-2 shadow-sm">
+                                    <span class="text-[9px] font-bold text-pastelBlueDark bg-pastelBlueLight px-2 py-0.5 rounded-full">Task-02</span>
+                                    <p class="font-bold text-cuteText text-[11px]">Tìm tài liệu nghiên cứu học thuật</p>
+                                    <p class="text-[9px] text-gray-400">Người làm: Bạn B</p>
                                 </div>
                             </div>
-                            <!-- Column 2 -->
-                            <div class="bg-pastelPinkLight/30 p-3 rounded-2xl border border-pastelPinkMedium/60">
-                                <span class="text-[10px] font-bold text-pastelPinkDark block border-b border-pastelPinkMedium pb-2 mb-3">⚡ ĐANG LÀM (IN PROGRESS)</span>
-                                <div class="bg-white p-3 rounded-xl border border-pastelPinkMedium text-xs space-y-2">
-                                    <div class="flex justify-between">
-                                        <span class="text-[9px] font-bold text-pastelPinkDark bg-pastelPinkLight px-1.5 py-0.5 rounded-full">Task-01</span>
-                                    </div>
-                                    <p class="font-semibold text-cuteText text-[11px]">Dịch thô văn bản tiếng Trung</p>
-                                    <p class="text-[9px] text-gray-400">Phụ trách: Lê Thu Hằng</p>
+                            <!-- Column In Progress -->
+                            <div class="bg-pastelPinkLight/30 p-3 rounded-2xl border-2 border-pastelPinkBorder">
+                                <span class="text-[10px] font-bold text-pastelPinkDark block border-b border-pastelPinkBorder pb-2 mb-3">⚡ ĐANG LÀM (IN PROGRESS)</span>
+                                <div class="bg-white p-3 rounded-xl border border-pastelPinkBorder text-xs space-y-2 shadow-sm">
+                                    <span class="text-[9px] font-bold text-pastelPinkDark bg-pastelPinkLight px-2 py-0.5 rounded-full">Task-01</span>
+                                    <p class="font-bold text-cuteText text-[11px]">Dịch thuật nháp chương 1</p>
+                                    <p class="text-[9px] text-gray-400">Người làm: Lê Thu Hằng</p>
                                 </div>
                             </div>
-                            <!-- Column 3 -->
-                            <div class="bg-pastelBlueLight/30 p-3 rounded-2xl border border-pastelBlueMedium/60">
-                                <span class="text-[10px] font-bold text-green-600 block border-b border-pastelBlueMedium pb-2 mb-3">✓ HOÀN THÀNH (DONE)</span>
-                                <div class="bg-white p-3 rounded-xl border border-pastelBlueMedium text-xs opacity-70 space-y-2">
-                                    <div class="flex justify-between">
-                                        <span class="text-[9px] font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full">Task-02</span>
-                                    </div>
-                                    <p class="font-semibold text-cuteText text-[11px]">Họp phân công kế hoạch</p>
+                            <!-- Column Done -->
+                            <div class="bg-pastelBlueLight/30 p-3 rounded-2xl border-2 border-pastelBlueBorder">
+                                <span class="text-[10px] font-bold text-green-600 block border-b border-pastelBlueBorder pb-2 mb-3">✓ HOÀN THÀNH (DONE)</span>
+                                <div class="bg-white p-3 rounded-xl border border-pastelBlueBorder text-xs opacity-75 space-y-2 shadow-sm">
+                                    <p class="font-bold text-cuteText text-[11px]">Phân công kế hoạch và họp nhóm số</p>
                                     <p class="text-[9px] text-green-600"><i class="fa-solid fa-circle-check"></i> Đã hoàn thành họp số</p>
                                 </div>
                             </div>
                         </div>
-
-                        <p class="text-[11px] text-gray-500 leading-relaxed">
-                            Bằng cách thiết lập bảng tiến độ đám mây, các thành viên nhóm dễ dàng chia sẻ tài liệu học tập thời gian thực, đồng thời tránh hiện tượng trùng lặp tác vụ. Mô hình thể hiện cách thức cộng tác hiệu quả giúp đội ngũ vận hành mượt mà và tiết kiệm thời gian đáng kể.
-                        </p>
                     </div>
                 </div>
 
-                <!-- SUBTAB CONTENT: TASK 5 (Sáng tạo nội dung) -->
+                <!-- SUBTAB CONTENT: TASK 5 (Sáng tạo nội dung với AI) -->
                 <div id="proj-task5" class="project-content hidden space-y-6">
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 cute-shadow">
-                        <!-- Character Banner -->
-                        <div class="flex items-center gap-3 mb-4 bg-pastelPinkLight p-3 rounded-2xl border border-pastelPinkMedium/40">
-                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-lg shadow-sm">🌸</div>
-                            <div>
-                                <h4 class="text-xs font-bold text-pastelPinkDark">CHIGIRI HYOMA ĐỒNG HÀNH:</h4>
-                                <p class="text-[11px] text-gray-500">"Vẻ đẹp nghệ thuật tinh tế và tốc độ kiến tạo nội dung ngoạn mục sẽ chinh phục mọi ánh nhìn!"</p>
+                    <div class="manga-panel p-6">
+                        <!-- Character Banner Overlay (Hyoma Chigiri) -->
+                        <div class="flex flex-col md:flex-row gap-6 items-center border-b-2 border-pastelPinkBorder pb-6 mb-6">
+                            <div class="w-full md:w-3/4 space-y-2">
+                                <span class="text-xs font-bold text-pastelPinkDark bg-pastelPinkLight border border-pastelPinkBorder px-2.5 py-1 rounded-full"><i class="fa-solid fa-palette mr-1.5"></i> NHIỆM VỤ 5</span>
+                                <h3 class="text-xl font-bold text-cuteText">Ứng dụng AI tạo sinh trong sáng tạo nội dung số</h3>
+                                <p class="text-xs text-gray-500">Người đồng hành thiết kế: <strong>Hyoma Chigiri</strong> - Đột phá tốc độ để mang lại các tác phẩm thiết kế mỹ thuật số xuất sắc.</p>
+                            </div>
+                            <div class="w-full md:w-1/4 char-popout-container" style="height: 180px;">
+                                <img src="https://static.wikia.nocookie.net/bluelock/images/8/87/Hyoma_Chigiri_uniform_anime_design.png/revision/latest" alt="Hyoma Chigiri" class="char-popout-img" style="height: 200px;">
                             </div>
                         </div>
 
-                        <h3 class="text-lg font-bold text-cuteText mb-2">Sử dụng AI tạo sinh để Hỗ trợ sáng tạo nội dung số</h3>
-                        <p class="text-xs text-gray-500 mb-6">Trực quan hóa ý tưởng kết hợp nghệ thuật cổ điển Trung Hoa với năng lượng thể thao học đường hiện đại bằng AI.</p>
-                        
+                        <!-- Content Layout -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Prompt & Steps -->
                             <div class="space-y-4">
-                                <div class="p-4 bg-pastelBlueLight/40 rounded-2xl border border-pastelBlueMedium text-xs">
-                                    <span class="font-bold text-pastelBlueDark block mb-1">Mẫu Prompt tạo ảnh minh hoạ nghệ thuật:</span>
+                                <div class="p-4 bg-pastelBlueLight/40 rounded-2xl border-2 border-pastelBlueBorder text-xs">
+                                    <span class="font-bold text-pastelBlueDark block mb-1">Mẫu câu lệnh tạo hình ảnh minh họa:</span>
                                     <p class="text-gray-600 italic">
                                         "A high-quality pastel watercolor artwork of a cute anime girl studying Chinese calligraphy on a cloud-shaped desk, surrounding floating blue lock puzzle pieces, sky blue and soft cream color palette, gentle soft lighting --ar 16:9"
                                     </p>
                                 </div>
-                                <div class="p-4 bg-white rounded-2xl border border-pastelBlueMedium/60">
-                                    <h4 class="text-xs font-bold text-cuteText mb-2">Các bước thực hiện có sự trợ giúp của AI:</h4>
-                                    <ul class="text-[11px] text-gray-500 space-y-1.5 list-disc pl-4">
-                                        <li>Lên kịch bản nội dung học tập sáng tạo.</li>
-                                        <li>Sử dụng Midjourney/DALL-E tạo ảnh minh hoạ dạng pastel nhẹ nhàng.</li>
-                                        <li>Biên tập bố cục, chèn chú thích văn bản ngữ pháp bằng Canva để hoàn thiện ấn phẩm cuối cùng.</li>
-                                    </ul>
-                                </div>
                             </div>
 
-                            <!-- Decorative Art Box -->
-                            <div class="border border-dashed border-pastelBlueMedium rounded-3xl bg-pastelBlueLight/20 flex flex-col items-center justify-center p-6 text-center">
-                                <div class="w-20 h-20 rounded-full bg-white flex items-center justify-center text-3xl float-animation shadow-sm">
-                                    🎨
-                                </div>
+                            <div class="border-2 border-dashed border-pastelBlueBorder rounded-3xl bg-pastelBlueLight/20 flex flex-col items-center justify-center p-6 text-center">
+                                <div class="w-20 h-20 rounded-full bg-white flex items-center justify-center text-3xl float-soft shadow-sm">🎨</div>
                                 <span class="text-xs font-bold text-pastelBlueDark mt-3">PASTEL DESIGN LAB</span>
-                                <p class="text-[10px] text-gray-400 mt-1 max-w-[200px]">Nơi sáng tạo và nghệ thuật số giao hoà một cách tinh tế nhất.</p>
+                                <p class="text-[10px] text-gray-400 mt-1 max-w-[200px]">Ý tưởng thiết kế nháp phục vụ minh họa thơ cổ.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SUBTAB CONTENT: TASK 6 (Đạo đức AI) -->
+                <!-- SUBTAB CONTENT: TASK 6 (Sử dụng AI có trách nhiệm) -->
                 <div id="proj-task6" class="project-content hidden space-y-6">
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 cute-shadow">
-                        <!-- Character Banner -->
-                        <div class="flex items-center gap-3 mb-4 bg-pastelBlueLight p-3 rounded-2xl border border-pastelBlueMedium/40">
-                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-lg shadow-sm">👓</div>
-                            <div>
-                                <h4 class="text-xs font-bold text-pastelBlueDark">CHỈ DẪN CỦA EGO JINPACHI:</h4>
-                                <p class="text-[11px] text-gray-500">"Hành xử có kỷ luật thép và tuân thủ chặt chẽ các nguyên tắc đạo đức để kiểm soát tuyệt đối AI!"</p>
+                    <div class="manga-panel p-6">
+                        <!-- Character Banner Overlay (Jinpachi Ego) -->
+                        <div class="flex flex-col md:flex-row gap-6 items-center border-b-2 border-pastelBlueBorder pb-6 mb-6">
+                            <div class="w-full md:w-3/4 space-y-2">
+                                <span class="text-xs font-bold text-pastelBlueHeader bg-pastelBlueLight border border-pastelBlueBorder px-2.5 py-1 rounded-full"><i class="fa-solid fa-shield-halved mr-1.5"></i> NHIỆM VỤ 6</span>
+                                <h3 class="text-xl font-bold text-cuteText">Cam kết Sử dụng AI có trách nhiệm trong học thuật</h3>
+                                <p class="text-xs text-gray-500">Người đồng hành thiết kế: <strong>Jinpachi Ego</strong> - Thiết lập tư duy kỷ luật thép để làm chủ đạo đức công nghệ số.</p>
+                            </div>
+                            <div class="w-full md:w-1/4 char-popout-container" style="height: 180px;">
+                                <img src="https://static.wikia.nocookie.net/bluelock/images/9/96/Jinpachi_Ego_anime_design.png/revision/latest" alt="Jinpachi Ego" class="char-popout-img" style="height: 200px;">
                             </div>
                         </div>
 
-                        <h3 class="text-lg font-bold text-cuteText mb-2">Sử dụng AI có trách nhiệm trong học thuật & Đời sống</h3>
-                        <p class="text-xs text-gray-500 mb-6">Cam kết đạo đức của bản thân khi ứng dụng các giải pháp trí tuệ nhân tạo trong nghiên cứu tại trường đại học.</p>
-                        
                         <!-- Ethics rules grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="p-4 bg-white border border-l-4 border-l-pastelBlueDark border-pastelBlueMedium rounded-2xl">
-                                <h4 class="text-xs font-bold text-pastelBlueDark mb-1">1. MINH BẠCH & GHI NHẬN THỰC CHẤT</h4>
+                            <div class="p-4 bg-white border-l-4 border-l-pastelBlueDark border-2 border-pastelBlueBorder rounded-2xl">
+                                <h4 class="text-xs font-bold text-pastelBlueDark mb-1">1. MINH BẠCH & TÔN TRỌNG ĐẠO ĐỨC</h4>
                                 <p class="text-[11px] text-gray-500 leading-relaxed">
-                                    Luôn chú thích rõ ràng dứt khoát các phần văn bản hoặc mã lệnh có sự tinh chỉnh, tham khảo từ AI. Không mạo danh AI hoặc đánh tráo sản phẩm sáng tạo trí tuệ tự thân.
+                                    Luôn chú thích rõ ràng các dải nguồn được hỗ trợ hoặc gợi ý từ các mô hình AI. Không đạo văn hoặc đánh tráo sản phẩm sáng tạo cá nhân.
                                 </p>
                             </div>
-                            <div class="p-4 bg-white border border-l-4 border-l-pastelPinkDark border-pastelPinkMedium rounded-2xl">
-                                <h4 class="text-xs font-bold text-pastelPinkDark mb-1">2. KHÔNG PHÓ THÁC TƯ DUY</h4>
+                            <div class="p-4 bg-white border-l-4 border-l-pastelPinkDark border-2 border-pastelPinkBorder rounded-2xl">
+                                <h4 class="text-xs font-bold text-pastelPinkDark mb-1">2. KHÔNG PHÓ THÁC TƯ DUY CHO MÁY MÓC</h4>
                                 <p class="text-[11px] text-gray-500 leading-relaxed">
-                                    Con người luôn là chủ thể phản biện và chịu trách nhiệm cao nhất về học thuật. Mọi kết quả dịch thuật do AI đề xuất đều phải được đối soát chép nghiêm khắc qua từ điển đáng tin cậy.
-                                </p>
-                            </div>
-                            <div class="p-4 bg-pastelBlueLight/30 border border-pastelBlueMedium rounded-2xl col-span-1 md:col-span-2">
-                                <h4 class="text-xs font-bold text-cuteText mb-1.5">3. CẢNH GIÁC THÁCH THỨC BẢO MẬT DỮ LIỆU</h4>
-                                <p class="text-[11px] text-gray-500 leading-relaxed">
-                                    Nhận thức rõ thách thức bảo mật của các hệ thống AI cộng đồng. Không tự ý tải lên các thông tin nhạy cảm của cá nhân, các bài thi học thuật kín hoặc dữ liệu bảo mật của nhà trường và đối tác nhóm.
+                                    Con người luôn là chủ thể phản biện cuối cùng. Mọi dữ liệu ngữ pháp Trung Quốc do AI cung cấp đều phải được Thu Hằng đối soát nghiêm khắc bằng từ điển chính thống.
                                 </p>
                             </div>
                         </div>
@@ -609,34 +575,33 @@
 
             </div>
 
-            <!-- ================= TAB: TỔNG KẾT (REFLECTION) ================= -->
+            <!-- ================= TAB: TỔNG KẾT & SUY NGẪM (REFLECTION) ================= -->
             <div id="section-reflection" class="tab-content hidden space-y-6">
-                <!-- Reflection Header card -->
-                <div class="bg-white border border-pastelBlueMedium rounded-3xl p-6 relative overflow-hidden cute-shadow">
-                    <div class="absolute -right-10 -top-10 w-36 h-36 bg-pastelBlueMedium/30 rounded-full blur-2xl"></div>
-                    <span class="text-xs font-bold text-pastelBlueDark bg-pastelBlueLight px-3 py-1 rounded-full">✨ Post-Match Interview ✨</span>
-                    <h2 class="text-2xl font-bold text-cuteText mt-3 mb-4">Sự Trưởng Thành Sau Những Trận Đấu Công Nghệ Số</h2>
+                <!-- Final Awakening Header (Ego Awakening style) -->
+                <div class="manga-panel p-6 relative overflow-hidden bg-gradient-to-r from-pastelBlueLight to-white">
+                    <span class="text-xs font-bold text-pastelPinkDark bg-pastelPinkLight border border-pastelPinkBorder px-3 py-1 rounded-full">✨ BÁO CÁO PHỎNG VẤN SỐ ✨</span>
+                    <h2 class="text-2xl font-bold text-cuteText mt-3 mb-4">Nhìn nhận lại hành trình tự nâng cấp bản ngã học tập</h2>
                     <p class="text-gray-600 leading-relaxed text-sm">
-                        Khi ngoảnh đầu nhìn lại chặng đường học tập của môn học này, mình tự hào nhận ra bản thân đã tự mở khóa cho mình những kỹ năng số vô giá. Từ một sinh viên đôi lúc còn e ngại trước thế giới công nghệ khô khan, mình đã dũng cảm học cách khai mở "bản ngã" của bản thân, tiến từng bước chậm rãi nhưng vững chắc để biến AI thành một cộng sự hữu ích.
+                        Kết thúc học kỳ học phần "Công nghệ số và AI", mình tự nhận thấy bản thân đã đạt được những bước tiến dài đầy ý nghĩa. Từ một sinh viên ngoại ngữ truyền thống, mình đã dám bứt phá học hỏi cách tổ chức dữ liệu đám mây khoa học và tự tin phối hợp làm việc nhóm trực tuyến để đạt hiệu năng xuất sắc nhất.
                     </p>
                 </div>
 
-                <!-- 3 Pillars of Reflection -->
+                <!-- Three pillars of growth -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-5 cute-shadow-sm">
+                    <div class="manga-panel p-5">
                         <div class="text-pastelBlueDark text-3xl font-bold mb-2">🎈</div>
-                        <h4 class="text-xs font-bold text-cuteText mb-2">Tri thức gặt hái được</h4>
-                        <p class="text-[11px] text-gray-500 leading-relaxed">Hiểu cách truy vấn thông tin chuẩn xác, làm quen tư duy thiết kế lệnh prompt khoa học và ứng dụng các nền tảng đám mây trực tuyến bổ ích.</p>
+                        <h4 class="text-xs font-bold text-cuteText mb-2">Học hỏi thành quả</h4>
+                        <p class="text-[11px] text-gray-500 leading-relaxed">Đã hiểu rõ cấu trúc truy vấn, phương pháp prompt thông minh và thiết lập kế hoạch nhóm khoa học.</p>
                     </div>
-                    <div class="bg-white border border-pastelPinkMedium rounded-3xl p-5 cute-shadow-sm">
+                    <div class="manga-panel p-5">
                         <div class="text-pastelPinkDark text-3xl font-bold mb-2">🛠️</div>
                         <h4 class="text-xs font-bold text-cuteText mb-2">Thách thức vượt qua</h4>
-                        <p class="text-[11px] text-gray-500 leading-relaxed">Đã có thời điểm cảm thấy choáng ngợp trước tốc độ phát triển chóng mặt của AI, nhưng việc học hỏi có quy tắc đã giúp bản thân làm chủ và điều phối công nghệ hiệu quả.</p>
+                        <p class="text-[11px] text-gray-500 leading-relaxed">Ban đầu còn loay hoay trong việc kiểm soát thông tin AI cung cấp, nhưng kỷ luật thép đã giúp mình vượt qua rào cản.</p>
                     </div>
-                    <div class="bg-white border border-pastelBlueMedium rounded-3xl p-5 cute-shadow-sm">
-                        <div class="text-pastelBlueDark text-3xl font-bold mb-2">🚀</div>
-                        <h4 class="text-xs font-bold text-cuteText mb-2">Tầm nhìn trong tương lai</h4>
-                        <p class="text-[11px] text-gray-500 leading-relaxed">Tiếp tục cập nhật cuốn Digital Portfolio này như một minh chứng cho nỗ lực chuyển đổi số bền bỉ của một nhà nghiên cứu ngôn ngữ Trung Quốc trẻ tuổi tại ULIS.</p>
+                    <div class="manga-panel p-5">
+                        <div class="text-pastelBlueHeader text-3xl font-bold mb-2">🚀</div>
+                        <h4 class="text-xs font-bold text-cuteText mb-2">Tầm nhìn tương lai</h4>
+                        <p class="text-[11px] text-gray-500 leading-relaxed">Tiếp tục cập nhật Digital Portfolio này để lưu giữ minh chứng nỗ lực số hóa bền bỉ tại giảng đường ULIS.</p>
                     </div>
                 </div>
             </div>
@@ -644,18 +609,18 @@
         </section>
     </main>
 
-    <!-- Cute Pastel Footer -->
-    <footer class="mt-16 border-t border-pastelBlueMedium/50 bg-white/80 py-6 text-center">
+    <!-- Footer Section -->
+    <footer class="mt-16 border-t-4 border-pastelBlueHeader bg-white py-6 text-center">
         <div class="max-w-7xl mx-auto px-6">
-            <p class="text-xs text-gray-400 font-semibold tracking-wider">
-                MỘT SẢN PHẨM SÁNG TẠO ĐÁNG YÊU CỦA LÊ THU HẰNG © 2026 ✿ CHÚC BẠN MỘT NGÀY VUI VẺ!
+            <p class="text-xs text-gray-400 font-bold tracking-widest">
+                DIGITAL PORTFOLIO SÁNG TẠO CỦA LÊ THU HẰNG © 2026 ✿ MỌI BẢN NGÃ ĐÃ ĐƯỢC GIẢI PHÓNG!
             </p>
         </div>
     </footer>
 
-    <!-- Interactive Sparkles Canvas Script -->
+    <!-- JS Interaction Scripts -->
     <script>
-        // Main Tab switching logic
+        // Tab switching logic
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(element => {
                 element.classList.add('hidden');
@@ -676,7 +641,7 @@
             }
         }
 
-        // Sub-tabs for Projects tasks
+        // Sub-tabs for Projects
         function switchProjectSubtab(subtaskId) {
             document.querySelectorAll('.project-content').forEach(element => {
                 element.classList.add('hidden');
@@ -697,8 +662,34 @@
             }
         }
 
-        // Canvas for cute pastel floating bubbles
-        const canvas = document.getElementById('bubbleCanvas');
+        // Character Deck Interactive Select
+        const characters = {
+            isagi: {
+                name: "Yoichi Isagi (🌱)",
+                quote: "Vũ khí: Thích ứng & Tái cấu trúc tư duy logic hoàn hảo!"
+            },
+            rin: {
+                name: "Rin Itoshi (❄️)",
+                quote: "Vũ khí: Phân tích chiến thuật sắc bén & Triệt tiêu sai số!"
+            },
+            bachira: {
+                name: "Meguru Bachira (🦊)",
+                quote: "Vũ khí: Sáng tạo bay bổng vô giới hạn & Dẫn bóng tự do!"
+            },
+            nagi: {
+                name: "Seishiro Nagi (💤)",
+                quote: "Vũ khí: Tiếp bóng thiên tài & Đơn giản hóa mọi độ khó!"
+            }
+        };
+
+        function selectCharacter(charKey) {
+            const char = characters[charKey];
+            document.getElementById('display-name').innerText = char.name;
+            document.getElementById('display-quote').innerText = char.quote;
+        }
+
+        // Sparkle background logic
+        const canvas = document.getElementById('sparkleCanvas');
         const ctx = canvas.getContext('2d');
         
         let width = canvas.width = window.innerWidth;
@@ -709,25 +700,23 @@
             height = canvas.height = window.innerHeight;
         });
 
-        const bubbles = [];
-        const bubbleCount = 35;
+        const particles = [];
+        const particleCount = 40;
 
-        class CuteBubble {
+        class Sparkle {
             constructor() {
                 this.x = Math.random() * width;
-                this.y = Math.random() * height + height; // Start below or randomly
-                this.radius = Math.random() * 12 + 6;
-                this.speedY = Math.random() * 0.4 + 0.1;
+                this.y = Math.random() * height;
+                this.radius = Math.random() * 8 + 4;
+                this.speedY = Math.random() * 0.3 + 0.1;
                 this.speedX = Math.random() * 0.2 - 0.1;
                 this.opacity = Math.random() * 0.4 + 0.1;
-                this.color = Math.random() > 0.5 ? '#BAE6FD' : '#FCE7F3'; // Blue or pink pastel
+                this.color = Math.random() > 0.5 ? '#BAE6FD' : '#FBCFE8';
             }
 
             update() {
                 this.y -= this.speedY;
                 this.x += this.speedX;
-                
-                // Reset bubble when it floats off the screen
                 if (this.y < -this.radius) {
                     this.y = height + this.radius;
                     this.x = Math.random() * width;
@@ -745,15 +734,15 @@
             }
         }
 
-        for (let i = 0; i < bubbleCount; i++) {
-            bubbles.push(new CuteBubble());
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Sparkle());
         }
 
         function drawSparkles() {
             ctx.clearRect(0, 0, width, height);
-            bubbles.forEach(b => {
-                b.update();
-                b.draw();
+            particles.forEach(p => {
+                p.update();
+                p.draw();
             });
             requestAnimationFrame(drawSparkles);
         }
