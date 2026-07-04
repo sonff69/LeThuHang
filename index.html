@@ -137,22 +137,24 @@
                 </div>
             </div>
             
-            <!-- White/Blue Dashboard Navigation -->
-            <nav class="flex flex-wrap items-center gap-2">
-                <button onclick="switchTab('home')" id="tab-home" class="px-4 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all tab-active flex items-center gap-2">
-                    <span>[</span> GIỚI THIỆU <span>]</span>
-                </button>
-                <button onclick="switchTab('projects')" id="tab-projects" class="px-4 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
-                    <span>[</span> DỰ ÁN HỌC TẬP <span>]</span>
-                </button>
-                <button onclick="switchTab('reflection')" id="tab-reflection" class="px-4 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
-                    <span>[</span> TỔNG KẾT & SUY NGẪM <span>]</span>
-                </button>
-                <!-- GG Drive Link Button on Menu -->
-                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="px-4 py-2 text-xs font-cyberTech font-bold text-white bg-gradient-to-r from-brandBlueDark to-cyan-500 rounded-full hover:shadow-[0_0_15px_rgba(34,211,238,0.5)] transition-all flex items-center gap-2">
-                    <i class="fa-brands fa-google-drive text-sm"></i> DRIVE BÀI TẬP [1]
+            <!-- White/Blue Dashboard Navigation + Google Drive Button -->
+            <div class="flex flex-col sm:flex-row items-center gap-4">
+                <nav class="flex gap-2">
+                    <button onclick="switchTab('home')" id="tab-home" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all tab-active flex items-center gap-2">
+                        <span>[</span> GIỚI THIỆU <span>]</span>
+                    </button>
+                    <button onclick="switchTab('projects')" id="tab-projects" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
+                        <span>[</span> DỰ ÁN HỌC TẬP <span>]</span>
+                    </button>
+                    <button onclick="switchTab('reflection')" id="tab-reflection" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
+                        <span>[</span> TỔNG KẾT & SUY NGẪM <span>]</span>
+                    </button>
+                </nav>
+                <!-- Main Header Button to Google Drive -->
+                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="px-4 py-2 text-[10px] font-cyberTech font-black bg-brandBlueLight text-brandBlueDark border-2 border-brandBlueBorder rounded-full hover:bg-brandBlueDark hover:text-white transition-all flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-brands fa-google-drive text-xs"></i> XEM BÀI TẬP TRÊN GG DRIVE
                 </a>
-            </nav>
+            </div>
         </div>
     </header>
 
@@ -269,7 +271,8 @@
                         </h2>
                         
                         <p class="text-xs text-gray-500 leading-relaxed mt-6">
-                            Chào bạn, mình là Thu Hằng. Trang portfolio này là nơi mình lưu lại hành trình học tập, tự mài giũa tư duy và kỹ năng số trong học phần Nhập môn Công nghệ số & Ứng dụng AI. Đối với một sinh viên ngành Ngôn ngữ & Văn hóa Trung Quốc tại ULIS, công nghệ không chỉ là những dòng code khô khan, mà là công cụ đắc lực mở ra những chiều sâu mới cho công tác dịch thuật và nghiên cứu học thuật. Lấy cảm hứng từ sự quyết tâm và tính kỷ luật từ bộ phim hoạt hình bóng đá nổi tiếng <strong>Blue Lock</strong>, mình áp dụng tư duy phân tích nghiêm túc đó vào học phần để xây dựng chiếc la bàn định hướng số lý tưởng cho con đường sự nghiệp tương lai.
+                            Chào mọi người! Mình là <strong>Lê Thu Hằng</strong>, sinh viên chuyên ngành Ngôn ngữ và Văn hóa Trung Quốc tại Đại học Ngoại ngữ - ĐHQGHN. Vốn quen thuộc với sách vở và chữ viết cổ điển, thế giới Công nghệ số và AI ban đầu là một thử thách khá lớn đối với mình. 
+                            Nhưng lấy cảm hứng từ thế giới Blue Lock – nơi mỗi người phải tự khai phá 'vũ khí' và phá vỡ giới hạn cũ của bản thân, mình đã coi môn học này như một trận bóng thực thụ để rèn luyện tư duy thực chiến. Đây là nhật ký ghi lại hành trình từ những bước làm quen máy tính cơ bản nhất cho đến các kỹ năng phối hợp công cụ thông minh.
                         </p>
                     </div>
 
@@ -282,10 +285,10 @@
                     <!-- Yoichi Isagi Card -->
                     <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[200px] md:min-h-[240px]">
                         <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
-                            <span class="text-[9px] font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-2 py-0.5 rounded">SYSTEMIC THOUGHTS</span>
-                            <h3 class="font-serifClassic text-lg font-bold text-cuteText italic">Tư duy Hệ thống</h3>
+                            <span class="text-[9px] font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-2 py-0.5 rounded">STRATEGIC THINKING</span>
+                            <h3 class="font-serifClassic text-lg font-bold text-cuteText italic">Yoichi Isagi</h3>
                             <p class="text-[11px] text-gray-500 leading-relaxed">
-                                Học hỏi từ phương pháp tiếp cận thích ứng và nhạy bén của Isagi Yoichi, mình đặt nặng tính cấu trúc và tính liên kết chặt chẽ của dữ liệu để xây dựng hệ thống lưu trữ khoa học.
+                                Người đồng hành hướng dẫn phương pháp **thích ứng** và **quy hoạch cấu trúc thư mục** đám mây khoa học nhất cho mọi môn học học đường.
                             </p>
                         </div>
                         <!-- Adjusted to -bottom-3 and -bottom-4 to eliminate transparent border gaps -->
@@ -295,10 +298,10 @@
                     <!-- Rin Itoshi Card -->
                     <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[200px] md:min-h-[240px]">
                         <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
-                            <span class="text-[9px] font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-2 py-0.5 rounded">SCHOLARLY PRECISION</span>
-                            <h3 class="font-serifClassic text-lg font-bold text-cuteText italic">Kỷ luật Học thuật</h3>
+                            <span class="text-[9px] font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-2 py-0.5 rounded">ABSOLUTE PRECISION</span>
+                            <h3 class="font-serifClassic text-lg font-bold text-cuteText italic">Rin Itoshi</h3>
                             <p class="text-[11px] text-gray-500 leading-relaxed">
-                                Lấy cảm hứng từ óc phân tích nhạy bén và khắt khe của Rin Itoshi, từng nguồn tài liệu nghiên cứu ngôn ngữ đều được mình tuyển chọn, đánh giá và kiểm chứng chéo một cách nghiêm ngặt.
+                                Người định hướng khả năng **truy vấn học thuật chuẩn xác** và **đánh giá nguồn tài liệu nghiêm ngặt** để loại bỏ mọi sai lệch thông tin.
                             </p>
                         </div>
                         <img src="RinItoshi.png" alt="Rin Itoshi" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
@@ -322,31 +325,32 @@
 
                 <!-- SUBTAB CONTENT: TASK 1 (Quản lý tệp - Isagi Yoichi) -->
                 <div id="proj-task1" class="project-content block space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
-                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[285px]">
+                        <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-folder-tree mr-1.5"></i> STAGE 1: FILE SYSTEM</span>
-                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Cấu trúc thư mục tối ưu và Quy tắc đặt tên</h3>
-                            <p class="text-xs text-gray-500">Để quản lý khối lượng học liệu học tập và nghiên cứu đồ sộ tại ULIS, mình đã xây dựng cấu trúc thư mục logic. Việc tuân thủ quy tắc đặt tên không dấu, dùng ký tự gạch dưới giúp hệ thống tự động sắp xếp khoa học, giảm thiểu tối đa tình trạng thất lạc tệp tin trong học tập và hoạt động nhóm.</p>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Gọn gàng từ nếp máy tính cá nhân</h3>
+                            <p class="text-xs text-gray-500">Bài tập đầu tiên rèn luyện cho mình thói quen ngăn nắp khi sử dụng máy tính. Thay vì lưu tệp lộn xộn ngoài Desktop, mình đã tự thiết lập lại cấu trúc lưu trữ khoa học.</p>
                             
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                                <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl font-mono text-[10px] text-cuteText">
-                                    <div class="text-brandBlueDark font-bold mb-1"><i class="fa-solid fa-network-wired mr-1"></i>CẤU TRÚC THƯ MỤC CÁ NHÂN:</div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                                <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl font-mono text-[9px] text-cuteText space-y-1">
+                                    <div class="text-brandBlueDark font-bold mb-1"><i class="fa-solid fa-network-wired mr-1"></i>SƠ ĐỒ THƯ MỤC TRÊN MÁY:</div>
                                     <div>📁 ThucHanh_LeThuHang/</div>
-                                    <div class="pl-2">└── 📁 TaiLieu/</div>
-                                    <div class="pl-4 text-gray-500">├── 📄 GhiChuQuanTrong.txt</div>
-                                    <div class="pl-4 text-gray-500">└── 📄 DiChuyen.txt</div>
+                                    <div class="pl-2">├── 📁 TaiLieu/</div>
+                                    <div class="pl-4 text-gray-450">└── 📄 GhiChuQuanTrong.txt (Moved)</div>
+                                    <div class="pl-4 text-gray-450">└── 📄 DiChuyen.txt (Cut & Paste)</div>
                                 </div>
-                                <div class="p-3 bg-brandLight rounded-xl border border-slate-200 text-[10px] text-gray-500">
-                                    <h4 class="font-cyberTech text-brandBlueDark mb-1">Các bước thực hành thực tế:</h4>
-                                    <p>1. Tạo thư mục rễ <span class="font-mono text-cyan-600">ThucHanh_LeThuHang</span> trên ổ đĩa học tập.</p>
-                                    <p>2. Khởi tạo tệp tin văn bản, đổi tên thành <span class="font-mono text-cyan-600">GhiChuQuanTrong.txt</span> và thực hiện sao chép, di chuyển tệp tin vào thư mục con.</p>
+                                <div class="p-3 bg-brandLight rounded-xl border border-slate-200 text-[9px] text-gray-500 space-y-1 flex flex-col justify-between">
+                                    <div>
+                                        <h4 class="font-cyberTech text-brandBlueDark mb-1">Các thao tác thực hành:</h4>
+                                        <p>• Tạo thư mục gốc <span class="font-mono text-cyan-600 font-bold">ThucHanh_LeThuHang</span> trên ổ đĩa.</p>
+                                        <p>• Tạo văn bản nháp, đổi tên thành <span class="font-mono text-cyan-600 font-bold">GhiChuQuanTrong.txt</span>.</p>
+                                        <p>• Di chuyển, sao chép các tệp liên quan vào thư mục con <span class="font-mono text-cyan-600 font-bold">TaiLieu</span> gọn gàng.</p>
+                                    </div>
+                                    <!-- Embedded Link directly to Google Drive Folder -->
+                                    <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="mt-2 text-brandBlueDark font-bold hover:underline flex items-center gap-1">
+                                        <i class="fa-brands fa-google-drive"></i> Xem thư mục bài tập trên Drive
+                                    </a>
                                 </div>
-                            </div>
-                            <!-- GG Drive Button for Task 1 -->
-                            <div class="pt-4">
-                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-cyberTech font-bold text-brandBlueDark border-2 border-brandBlueBorder bg-brandBlueLight rounded-xl hover:bg-brandBlueMedium transition-all">
-                                    <i class="fa-brands fa-google-drive text-sm"></i> XEM BÀI TẬP TRÊN DRIVE [1]
-                                </a>
                             </div>
                         </div>
                         <img src="YoichiIsagi.png" alt="Isagi Yoichi" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
@@ -355,41 +359,41 @@
 
                 <!-- SUBTAB CONTENT: TASK 2 (Truy vấn học thuật - Rin Itoshi) -->
                 <div id="proj-task2" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
-                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[285px]">
+                        <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-magnifying-glass mr-1.5"></i> STAGE 2: SEARCH STRATEGY</span>
-                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Truy vấn thông tin & Đánh giá nguồn học thuật</h3>
-                            <p class="text-xs text-gray-500">Đối với đề tài đối chiếu hành vi ngôn ngữ cầu khiến trong tiếng Hán và tiếng Việt, mình áp dụng các toán tử chuyên sâu trên Google Scholar để chọn lọc tài liệu khoa học uy tín, sau đó thực hiện đánh giá các nguồn tham khảo theo hệ thống tiêu chí nghiêm ngặt.</p>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Lọc tìm tri thức như một chuyên gia</h3>
+                            <p class="text-xs text-gray-500"><strong>Đề tài nghiên cứu chuyên sâu:</strong> "Nghiên cứu đối chiếu hành vi ngôn ngữ cầu khiến (Requesting/Ordering) trong tiếng Hán và tiếng Việt: Tiếp cận từ lý thuyết lịch sự và ngữ dụng học."</p>
                             
-                            <div class="space-y-3 pt-2">
-                                <div class="bg-brandBlueLight p-3 rounded-xl border border-brandBlueBorder text-[10px]">
-                                    <span class="font-cyberTech text-brandBlueDark uppercase tracking-wider block mb-1">Toán tử truy vấn lọc tài liệu (Sử dụng 4 loại nguồn):</span>
-                                    <p class="font-mono text-brandBlueDark font-bold">("machine translation" OR "AI translation") AND "Chinese to Vietnamese" AND site:.edu AND filetype:pdf -site:wikipedia.org</p>
+                            <div class="space-y-3 pt-1">
+                                <div class="bg-brandBlueLight p-3 rounded-xl border border-brandBlueBorder text-[9px] space-y-1">
+                                    <span class="font-cyberTech text-brandBlueDark uppercase tracking-wider block font-bold">Truy cập toàn diện qua 4 nguồn tư liệu:</span>
+                                    <p>• <strong>Dữ liệu lớn:</strong> Google Scholar, CNKI (hệ thống dữ liệu học thuật tiếng Trung lớn nhất), Luận văn ULIS.</p>
+                                    <p>• <strong>Tạp chí uy tín:</strong> Tạp chí Ngôn ngữ, Tạp chí KH Ngoại ngữ (ULIS), Journal of Pragmatics.</p>
+                                    <p>• <strong>Sách chuyên khảo:</strong> Giáo trình Ngữ dụng học của Đỗ Hữu Châu, Nguyễn Đức Dân, Brown & Levinson.</p>
+                                    <p>• <strong>Nguồn mở tin cậy:</strong> Working Papers từ ResearchGate và Academia.edu.</p>
                                 </div>
-                                <div class="overflow-x-auto border border-slate-200 rounded-xl text-[10px]">
+                                <div class="overflow-x-auto border border-slate-200 rounded-xl text-[8px] bg-white">
                                     <table class="w-full text-left">
                                         <tr class="bg-brandLight text-brandBlueDark font-cyberTech border-b">
-                                            <th class="p-2">Tên tài liệu / Tác giả</th>
-                                            <th class="p-2">Tiêu chí đánh giá khoa học</th>
-                                            <th class="p-2">Ưu điểm & Nhược điểm (Harvard Format)</th>
+                                            <th class="p-2">Tài liệu tham khảo / Tác giả</th>
+                                            <th class="p-2">Phương pháp nghiên cứu</th>
+                                            <th class="p-2">Đánh giá theo chuẩn Harvard</th>
                                         </tr>
-                                        <tr class="text-gray-500">
+                                        <tr class="text-gray-600 border-b">
                                             <td class="p-2 font-bold text-cuteText">Nguyễn, V. H. (2022)</td>
-                                            <td class="p-2">Bài báo khoa học, Tạp chí Ngôn ngữ. Định lượng 200 mẫu khảo sát.</td>
-                                            <td class="p-2">Ưu: Số liệu thực tế mới mẻ. Nhược: Phạm vi khảo sát hẹp ở sinh viên. (5/5)</td>
+                                            <td class="p-2">Khảo sát định lượng 200 người thực tế.</td>
+                                            <td class="p-2">Số liệu thực nghiệm rõ ràng, mang tính cập nhật cao. (Xếp hạng: 5/5)</td>
                                         </tr>
-                                        <tr class="text-gray-500">
+                                        <tr class="text-gray-600">
                                             <td class="p-2 font-bold text-cuteText">Pragmatics (Levinson, 1983)</td>
-                                            <td class="p-2">Sách chuyên khảo, Cambridge University Press.</td>
-                                            <td class="p-2">Ưu: Lý thuyết gốc kinh điển. Nhược: Đã cũ, cần cập nhật nghiên cứu mới bổ sung. (4.5/5)</td>
+                                            <td class="p-2">Lý thuyết ngữ dụng học nền tảng.</td>
+                                            <td class="p-2">Sách gốc kinh điển nhưng số liệu cũ, cần kết hợp tài liệu mới bổ trợ. (Xếp hạng: 4.5/5)</td>
                                         </tr>
                                     </table>
                                 </div>
-                            </div>
-                            <!-- GG Drive Button for Task 2 -->
-                            <div class="pt-4">
-                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-cyberTech font-bold text-brandBlueDark border-2 border-brandBlueBorder bg-brandBlueLight rounded-xl hover:bg-brandBlueMedium transition-all">
-                                    <i class="fa-brands fa-google-drive text-sm"></i> XEM BÀI TẬP TRÊN DRIVE [1]
+                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] text-brandBlueDark font-bold hover:underline">
+                                    <i class="fa-brands fa-google-drive"></i> Xem báo cáo tìm kiếm và tài liệu gốc trên Drive
                                 </a>
                             </div>
                         </div>
@@ -399,35 +403,32 @@
 
                 <!-- SUBTAB CONTENT: TASK 3 (Prompt Engineering - Meguru Bachira) -->
                 <div id="proj-task3" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[285px]">
                         <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-comment-dots mr-1.5"></i> STAGE 3: PROMPT ENGINEERING</span>
-                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Kỹ thuật viết Prompt hiệu quả cho các tác vụ học tập</h3>
-                            <p class="text-xs text-gray-500">Chất lượng phản hồi của AI phụ thuộc hoàn toàn vào cách chúng ta thiết kế câu lệnh. Việc cung cấp vai trò chuyên gia (Persona) và giới hạn ngữ cảnh (Context) sẽ giúp AI đưa ra kết quả có chiều sâu học thuật và tính ứng dụng thực tiễn cao hơn rất nhiều so với những câu lệnh chung chung.</p>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Luyện cách trò chuyện thông minh với AI</h3>
+                            <p class="text-xs text-gray-500">Đặt câu hỏi hời hợt chỉ nhận lại kết quả đại trà. Mình đã học cách thiết lập vai trò, bối cảnh và yêu cầu rõ ràng để AI cho ra kết quả xuất sắc:</p>
                             
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 text-[10px]">
-                                <div class="bg-brandBlueLight border border-brandBlueBorder p-2.5 rounded-xl space-y-1">
-                                    <span class="font-cyberTech text-brandBlueDark block font-bold">1. Tóm tắt Biến đổi khí hậu:</span>
-                                    <p>• <strong>Prompt cơ bản:</strong> Chỉ yêu cầu tóm tắt chung chung làm văn bản đầu ra bị phân tán thông tin.</p>
-                                    <p class="text-gray-500">• <strong>Prompt cải tiến:</strong> Quy định tóm tắt ngắn gọn dưới 100 từ, yêu cầu phân ý rõ ràng theo 4 nội dung (Chủ đề, Nguyên nhân, Hậu quả, Giải pháp) và liệt kê 3 từ khóa cốt lõi.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1 text-[9px] leading-tight">
+                                <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl space-y-1">
+                                    <span class="font-cyberTech text-brandBlueDark block font-bold">1. Tóm tắt Biến đổi khí hậu</span>
+                                    <p>• <strong>Prompt cơ bản:</strong> "Hãy tóm tắt bài viết sau..." chỉ nhận được một đoạn tóm tắt chung chung.</p>
+                                    <p class="text-gray-500">• <strong>Cải tiến:</strong> Ràng buộc dung lượng dưới 100 từ, chia rõ 4 phần: chủ đề, nguyên nhân, hậu quả và hướng giải quyết.</p>
                                 </div>
-                                <div class="bg-brandBlueLight border border-brandBlueBorder p-2.5 rounded-xl space-y-1">
-                                    <span class="font-cyberTech text-brandBlueDark block font-bold">2. Giải thích Machine Learning:</span>
-                                    <p>• <strong>Prompt cơ bản:</strong> Định nghĩa máy học bằng lý thuyết hàn lâm cực kỳ khô khan.</p>
-                                    <p class="text-gray-500">• <strong>Prompt cải tiến:</strong> Yêu cầu giải thích cho học sinh lớp 10, đơn giản hóa cấu trúc lý thuyết và lồng ghép ví dụ gần gũi (email spam, đề xuất video TikTok, nhận diện khuôn mặt).</p>
+                                <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl space-y-1">
+                                    <span class="font-cyberTech text-brandBlueDark block font-bold">2. Giải thích Machine Learning</span>
+                                    <p>• <strong>Prompt cơ bản:</strong> "Giải thích Machine Learning" trả về một đống khái niệm công nghệ khô khan.</p>
+                                    <p class="text-gray-500">• <strong>Cải tiến:</strong> Yêu cầu giải thích cho học sinh lớp 10 bằng ngôn ngữ bình dân kèm ví dụ thiết thực (Email spam, gợi ý video TikTok, nhận diện khuôn mặt).</p>
                                 </div>
-                                <div class="bg-brandBlueLight border border-brandBlueBorder p-2.5 rounded-xl space-y-1">
-                                    <span class="font-cyberTech text-brandBlueDark block font-bold">3. Đề câu hỏi ôn tập Quang hợp:</span>
-                                    <p>• <strong>Prompt cơ bản:</strong> Liệt kê ngẫu nhiên một danh sách các câu hỏi phổ biến.</p>
-                                    <p class="text-gray-500">• <strong>Prompt cải tiến:</strong> Đóng vai giáo viên Sinh học THPT, thiết kế câu hỏi phân cấp khoa học từ Nhận biết đến Vận dụng, có kèm đáp án chi tiết.</p>
+                                <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl space-y-1">
+                                    <span class="font-cyberTech text-brandBlueDark block font-bold">3. Tạo đề quang hợp Sinh học</span>
+                                    <p>• <strong>Prompt cơ bản:</strong> "Tạo câu hỏi quang hợp" cho ra danh sách câu hỏi rời rạc.</p>
+                                    <p class="text-gray-500">• <strong>Cải tiến:</strong> Gán vai giáo viên Sinh học THPT, phân loại đề thành 3 mức độ (Nhận biết, Thông hiểu, Vận dụng) kèm đáp án chi tiết.</p>
                                 </div>
                             </div>
-                            <!-- GG Drive Button for Task 3 -->
-                            <div class="pt-4">
-                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-cyberTech font-bold text-brandBlueDark border-2 border-brandBlueBorder bg-brandBlueLight rounded-xl hover:bg-brandBlueMedium transition-all">
-                                    <i class="fa-brands fa-google-drive text-sm"></i> XEM BÀI TẬP TRÊN DRIVE [1]
-                                </a>
-                            </div>
+                            <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] text-brandBlueDark font-bold hover:underline">
+                                <i class="fa-brands fa-google-drive"></i> Xem tệp tin nhật ký viết Prompt trên Drive
+                            </a>
                         </div>
                         <img src="MeguruBachira.png" alt="Meguru Bachira" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
                     </div>
@@ -435,29 +436,28 @@
 
                 <!-- SUBTAB CONTENT: TASK 4 (Cộng tác nhóm - Seishiro Nagi) -->
                 <div id="proj-task4" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
-                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[285px]">
+                        <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-users mr-1.5"></i> STAGE 4: ONLINE COLLABORATION</span>
-                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Báo cáo sử dụng công cụ hợp tác trực tuyến</h3>
-                            <p class="text-xs text-gray-500"><strong>Dự án nhóm:</strong> "Ứng dụng AI trong việc học ngữ pháp" (Cụ thể là phân tích ứng dụng LanguageTool kiểm tra lỗi ngữ pháp và chính tả). Mình đã phối hợp phân chia công việc trên các nền tảng trực tuyến để đạt hiệu năng xuất sắc.</p>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Làm việc nhóm nhịp nhàng trên không gian số</h3>
+                            <p class="text-xs text-gray-500"><strong>Dự án thực tế:</strong> "Ứng dụng AI học ngữ pháp" (Cùng nhóm nghiên cứu và phân tích phần mềm kiểm tra lỗi chính tả LanguageTool).</p>
                             
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 text-[10px] leading-snug">
-                                <div class="bg-brandBlueLight p-2.5 rounded-xl border border-brandBlueBorder space-y-1">
-                                    <span class="text-brandBlueDark font-cyberTech block mb-1">⚡ TỐI ƯU QUY TRÌNH QUẢN TRỊ:</span>
-                                    <p>• <strong>Trello:</strong> Theo dõi tiến độ cá nhân thông qua các phân cấp (Cần làm, Đang làm, Đã xong) giúp hoàn thành đúng tiến độ các nhiệm vụ cá nhân như nghiên cứu, soạn slide.</p>
-                                    <p>• <strong>Google Docs:</strong> Đồng biên soạn trực tiếp phần nội dung đóng góp về LanguageTool (định nghĩa, ưu/nhược điểm, ví dụ minh họa và đối tượng sử dụng).</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1 text-[9px] leading-snug">
+                                <div class="bg-brandBlueLight p-3 rounded-xl border border-brandBlueBorder space-y-1">
+                                    <h4 class="font-cyberTech text-brandBlueDark font-bold">KẾT NỐI TÁC VỤ QUA TRELLO & GOOGLE DOCS:</h4>
+                                    <p>• <strong>Trello:</strong> Chia tiến độ thành 3 cột (To Do, Doing, Done). Mình phụ trách nghiên cứu LanguageTool, soạn thảo tài liệu và thiết kế slide thuyết trình, hoàn thành đúng hạn không bị trễ.</p>
+                                    <p>• <strong>Google Docs:</strong> Cùng nhóm viết trực tiếp bài phân tích (Nguyên lý hoạt động, Ưu/Nhược điểm, đối tượng phù hợp), dễ dàng chỉnh sửa đồng thời với bạn bè.</p>
                                 </div>
-                                <div class="bg-brandLight p-2.5 rounded-xl border border-slate-200 space-y-1">
-                                    <span class="text-brandBlueDark font-cyberTech block mb-1">📁 LƯU TRỮ VÀ GIAO TIẾP NHÓM:</span>
-                                    <p>• <strong>Google Drive:</strong> Lưu trữ tập trung tài liệu tham khảo dịch thuật, ảnh chụp minh họa, đảm bảo đồng bộ tài liệu nhóm kịp thời.</p>
-                                    <p>• <strong>Discord:</strong> Tạo các kênh chat chuyên biệt như <span class="font-semibold">#phan-cong-viec</span> và <span class="font-semibold">#tien-do-cong-viec</span> để thảo luận nhanh chóng và thống nhất hướng giải quyết dự án.</p>
+                                <div class="bg-brandLight p-3 rounded-xl border border-slate-200 space-y-1 flex flex-col justify-between">
+                                    <div>
+                                        <h4 class="font-cyberTech text-brandBlueDark font-bold">QUẢN LÝ DỮ LIỆU QUA DRIVE & DISCORD:</h4>
+                                        <p>• <strong>Google Drive:</strong> Lưu trữ tập trung tài liệu tham khảo dịch thuật của nhóm, sắp xếp gọn gàng theo thư mục chung để tiện tra cứu.</p>
+                                        <p>• <strong>Discord:</strong> Thảo luận nhanh chóng hàng ngày qua kênh <span class="font-semibold">#phan-cong-viec</span> và <span class="font-semibold">#tien-do-cong-viec</span>.</p>
+                                    </div>
+                                    <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="mt-2 text-brandBlueDark font-bold hover:underline flex items-center gap-1">
+                                        <i class="fa-brands fa-google-drive"></i> Xem báo cáo hợp tác nhóm trên Drive
+                                    </a>
                                 </div>
-                            </div>
-                            <!-- GG Drive Button for Task 4 -->
-                            <div class="pt-4">
-                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-cyberTech font-bold text-brandBlueDark border-2 border-brandBlueBorder bg-brandBlueLight rounded-xl hover:bg-brandBlueMedium transition-all">
-                                    <i class="fa-brands fa-google-drive text-sm"></i> XEM BÀI TẬP TRÊN DRIVE [1]
-                                </a>
                             </div>
                         </div>
                         <img src="SeishiroNagi.png" alt="Seishiro Nagi" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
@@ -466,21 +466,20 @@
 
                 <!-- SUBTAB CONTENT: TASK 5 (Sáng tạo AI - Hyoma Chigiri) -->
                 <div id="proj-task5" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
-                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[285px]">
+                        <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> STAGE 5: GENERATIVE ART</span>
-                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Thiết kế Infographic về Tác động của AI tạo sinh</h3>
-                            <p class="text-xs text-gray-500">Trong quá trình thiết kế infographic phân tích tác động của AI tạo sinh đối với sinh viên, mình đã kết hợp hài hòa quy trình sản xuất nội dung số gồm 3 công cụ AI để rút ngắn thời gian thiết kế nhưng vẫn giữ vững dấu ấn cá nhân mộc mạc.</p>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Tự tay làm Infographic từ con số không</h3>
+                            <p class="text-xs text-gray-550">Quy trình kết hợp 3 công cụ AI để thiết kế sản phẩm Infographic độc bản về "Tác động của AI tạo sinh đối với sinh viên":</p>
                             
-                            <div class="bg-brandBlueLight p-3 rounded-xl border border-brandBlueBorder text-[10px] space-y-1.5 leading-relaxed">
-                                <p>• <strong>1. AI Tạo văn bản (ChatGPT):</strong> Sử dụng prompt chuyên sâu để tạo ra nội dung thô khoảng 250 từ (Định nghĩa AI, 4 lợi ích học tập, 3 thách thức tiêu cực và 5 lời khuyên sử dụng có trách nhiệm). Tiến hành biên tập, rút gọn nội dung thủ công để phù hợp bố cục Canva.</p>
-                                <p>• <strong>2. AI Tạo hình ảnh (DALL-E):</strong> Nhập prompt: <span class="italic text-cyan-600">"A modern flat vector illustration of a university student studying with an AI assistant on a laptop, blue and white color theme, clean infographic style"</span> để tạo minh họa hiện đại, sau đó thực hiện cắt nền tự động.</p>
-                                <p>• <strong>3. AI Hỗ trợ thiết kế (Canva AI):</strong> Gợi ý bố cục thiết kế phẳng hiện đại tông màu xanh lam, Thu Hằng trực tiếp điều chỉnh phông chữ, khoảng cách các khối thông điệp và chèn ảnh minh họa từ DALL-E.</p>
+                            <div class="bg-brandBlueLight p-3 rounded-xl border border-brandBlueBorder text-[9px] space-y-2">
+                                <p>• <strong>Bước 1 - Lên khung nội dung (ChatGPT):</strong> Sử dụng prompt chuyên sâu để tạo dàn ý nội dung 250 từ (Định nghĩa AI, 4 điểm cộng học thuật, 3 điểm hạn chế tiêu cực và 5 lời khuyên đạo đức). Mình tự tay rút gọn và viết lại theo đúng văn phong dễ hiểu của bản thân.</p>
+                                <p>• <strong>Bước 2 - Phác họa mỹ thuật (DALL-E):</strong> Nhập câu chỉ dẫn: <span class="italic text-cyan-600">"A modern flat vector illustration of a university student studying with an AI assistant on a laptop, blue and white color theme, clean infographic style"</span>. Tiến hành cắt nền để chèn vào infographic.</p>
+                                <p>• <strong>Bước 3 - Thổi hồn thiết kế (Canva AI):</strong> Chọn bố cục màu tím/xanh dương hiện đại, tự mình điều chỉnh lại phông chữ, khoảng cách, biểu tượng và ghép hình minh họa của DALL-E để tạo dấu ấn riêng biệt.</p>
                             </div>
-                            <!-- GG Drive Button for Task 5 -->
-                            <div class="pt-4">
-                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-cyberTech font-bold text-brandBlueDark border-2 border-brandBlueBorder bg-brandBlueLight rounded-xl hover:bg-brandBlueMedium transition-all">
-                                    <i class="fa-brands fa-google-drive text-sm"></i> XEM BÀI TẬP TRÊN DRIVE [1]
+                            <div class="pt-1">
+                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] text-brandBlueDark font-bold hover:underline">
+                                    <i class="fa-brands fa-google-drive"></i> Xem Infographic hoàn chỉnh trên Drive
                                 </a>
                             </div>
                         </div>
@@ -490,26 +489,25 @@
 
                 <!-- SUBTAB CONTENT: TASK 6 (Đạo đức AI - Jinpachi Ego) -->
                 <div id="proj-task6" class="project-content hidden space-y-6 pt-6">
-                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
-                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[285px]">
+                        <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
                             <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-shield-halved mr-1.5"></i> STAGE 6: ETHICS & RESPONSIBILITY</span>
-                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Cam kết Đạo đức học thuật khi ứng dụng AI</h3>
-                            <p class="text-xs text-gray-500">Mình luôn ý thức rằng công nghệ chỉ là trợ thủ, tư duy phản biện của con người mới là quyết định. Trong học thuật, Thu Hằng nghiêm túc thực hiện bản cam kết đạo đức số:</p>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Chính trực học thuật trong kỷ nguyên AI</h3>
+                            <p class="text-xs text-gray-500">Là một sinh viên ngôn ngữ, Thu Hằng luôn tự nhắc nhở bản thân về ranh giới đạo đức khi sử dụng AI hỗ trợ học tập:</p>
                             
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 text-[10px] leading-relaxed">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 text-[9px] leading-relaxed">
                                 <div class="p-3 bg-white border-l-4 border-l-brandBlueDark border border-slate-200 rounded-xl space-y-1">
-                                    <span class="font-cyberTech text-brandBlueDark block font-bold">1. MINH BẠCH & TÔN TRỌNG BẢN QUYỀN</span>
-                                    <p class="text-gray-500">Người sử dụng cần minh bạch về việc có sử dụng AI, không sao chép nguyên bản đầu ra mà không qua tinh chỉnh học thuật, bảo vệ tính trung thực tối thiểu của bản thân.</p>
+                                    <span class="font-cyberTech text-brandBlueDark block font-bold">1. MINH BẠCH VÀ TRUNG THỰC</span>
+                                    <p class="text-gray-500 font-medium">Bản thân luôn chủ động khai báo rõ ràng trong báo cáo khi có sự trợ lực từ AI, tuyệt đối không sao chép nguyên văn đầu ra để mạo danh năng lực sáng tạo cá nhân.</p>
                                 </div>
                                 <div class="p-3 bg-white border-l-4 border-l-brandBlueDark border border-slate-200 rounded-xl space-y-1">
-                                    <span class="font-cyberTech text-brandBlueDark block font-bold">2. KIỂM CHỨNG & TRÁCH NHIỆM CÁ NHÂN</span>
-                                    <p class="text-gray-500">Luôn ghi nhớ AI là công cụ hỗ trợ nâng cao hiệu quả sáng tạo chứ không thay thế hoàn toàn tư duy của con người. Mọi công bố học thuật đều phải được cá nhân xác thực.</p>
+                                    <span class="font-cyberTech text-brandBlueDark block font-bold">2. GIỮ VỮNG TƯ DUY PHẢN BIỆN</span>
+                                    <p class="text-gray-500 font-medium">AI chỉ nên là một trợ thủ hỗ trợ tìm kiếm cấu trúc nháp. Trách nhiệm rà soát lỗi dịch thuật cuối cùng, cảm xúc chuyển ngữ và bảo mật thông tin luôn phải thuộc về tư duy của con người.</p>
                                 </div>
                             </div>
-                            <!-- GG Drive Button for Task 6 -->
-                            <div class="pt-4">
-                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-cyberTech font-bold text-brandBlueDark border-2 border-brandBlueBorder bg-brandBlueLight rounded-xl hover:bg-brandBlueMedium transition-all">
-                                    <i class="fa-brands fa-google-drive text-sm"></i> XEM BÀI TẬP TRÊN DRIVE [1]
+                            <div class="pt-1">
+                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] text-brandBlueDark font-bold hover:underline">
+                                    <i class="fa-brands fa-google-drive"></i> Xem bản quy tắc đạo đức AI trên Drive
                                 </a>
                             </div>
                         </div>
@@ -530,7 +528,7 @@
                     <h2 class="font-serifClassic text-3xl font-bold italic text-cuteText mt-4 mb-6">Nhìn nhận lại hành trình mài giũa bản ngã số</h2>
                     
                     <p class="text-xs text-gray-500 leading-relaxed">
-                        Trải qua chặng đường hoàn thành học phần Công nghệ số và AI, mình tự hào nhận ra bản thân đã gặt hái được những chuyển hóa ý nghĩa. Từ một sinh viên ngôn ngữ đôi lúc còn e ngại trước thế giới công nghệ khô khan, mình đã dũng cảm học cách làm bạn và biến AI thành người đồng đội đắc lực để học tập cẩn trọng và hiệu quả hơn.
+                        Học phần "Nhập môn Công nghệ số và Ứng dụng AI" đã giúp mình gạt bỏ hoàn toàn định kiến rằng công nghệ số là một thứ gì đó khô khan, phức tạp. Khi biết cách kết hợp khéo léo giữa thế mạnh ngôn ngữ học sẵn có của bản thân với các công cụ hợp tác nhóm và AI tạo sinh, công nghệ thực sự trở thành đòn bẩy tuyệt vời nhất nâng cánh cho tư duy phát triển bay xa hơn.
                     </p>
 
                     <div class="star-trail my-6"></div>
