@@ -1,1 +1,636 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Thu Hằng Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandWhite: '#FFFFFF',
+                        brandLight: '#F8FAFC', // slate-50
+                        brandBlueLight: '#F0F9FF', // sky-50
+                        brandBlueMedium: '#E0F2FE', // sky-100
+                        brandBlueBorder: '#BAE6FD', // sky-200
+                        brandBlueDark: '#0284C7', // sky-600
+                        brandBlueHeader: '#0369A1', // sky-700
+                        cuteText: '#0F172A', // slate-900
+                    },
+                    fontFamily: {
+                        serifClassic: ['Playfair Display', 'serif'],
+                        cyberTech: ['Orbitron', 'sans-serif'],
+                        techSpecs: ['Rajdhani', 'sans-serif'],
+                        bodyText: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #0F172A;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            /* Faint grid background resembling blueprints */
+            background-image: radial-gradient(#E2E8F0 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+        /* Custom Glowing Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38BDF8;
+            border-radius: 999px;
+            border: 2px solid #FFFFFF;
+        }
+        /* Elegant camera target focus borders */
+        .camera-bracket {
+            position: relative;
+        }
+        .camera-bracket::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 14px;
+            height: 14px;
+            border-top: 2px solid #0284C7;
+            border-l-2: 2px solid #0284C7;
+        }
+        /* Premium Glowing Cards over White Background */
+        .glowing-card {
+            background: #FFFFFF;
+            border: 2px solid #E2E8F0;
+            box-shadow: 0 10px 30px rgba(186, 230, 253, 0.2);
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .glowing-card:hover {
+            border-color: #0284C7;
+            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.25);
+            transform: translateY(-2px);
+        }
+        /* Star trails line decoration */
+        .star-trail {
+            background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+            height: 1.5px;
+            width: 100%;
+        }
+        /* Active Tab styles */
+        .tab-active {
+            color: #0369A1 !important;
+            border-bottom: 3px solid #0284C7 !important;
+            font-weight: 700;
+        }
+        .project-subtab-active {
+            background-color: #E0F2FE !important;
+            border-color: #0284C7 !important;
+            color: #0369A1 !important;
+            font-weight: 700;
+        }
+        /* Absolute Character Popout (Origin bottom-right locks the base to bottom-right corner) */
+        .char-popout {
+            transform-origin: bottom right;
+            filter: drop-shadow(0 10px 15px rgba(186, 230, 253, 0.5));
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+        }
+        .glowing-card:hover .char-popout {
+            transform: scale(1.08); /* Scales up, head pops higher and slightly left, bottom-right remains locked */
+            filter: drop-shadow(0 15px 25px rgba(2, 132, 199, 0.40));
+        }
+    </style>
+</head>
+<body class="relative min-h-screen pb-12">
 
+    <!-- Interactive Canvas background drawing soft sparkles on white background -->
+    <canvas id="sparkleCanvas" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-50"></canvas>
+
+    <!-- Header Section -->
+    <header class="border-b-2 border-slate-100 bg-white/95 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 border-2 border-cyan-500 rounded-lg flex items-center justify-center relative">
+                    <span class="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-cyan-500"></span>
+                    <span class="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-cyan-500"></span>
+                    <i class="fa-solid fa-crosshairs text-cyan-500 text-lg animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="font-cyberTech font-black text-lg tracking-widest text-brandBlueHeader">
+                        BLUE LOCK <span class="text-xs font-serifClassic italic text-cyan-500">Edition</span>
+                    </h1>
+                    <p class="text-[10px] font-techSpecs text-cyan-600 tracking-widest uppercase">EGOIST SELECTION COGNITIVE PANEL</p>
+                </div>
+            </div>
+            
+            <!-- White/Blue Dashboard Navigation + Google Drive Button -->
+            <div class="flex flex-col sm:flex-row items-center gap-4">
+                <nav class="flex gap-2">
+                    <button onclick="switchTab('home')" id="tab-home" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all tab-active flex items-center gap-2">
+                        <span>[</span> GIỚI THIỆU <span>]</span>
+                    </button>
+                    <button onclick="switchTab('projects')" id="tab-projects" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
+                        <span>[</span> DỰ ÁN HỌC TẬP <span>]</span>
+                    </button>
+                    <button onclick="switchTab('reflection')" id="tab-reflection" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
+                        <span>[</span> TỔNG KẾT & SUY NGẪM <span>]</span>
+                    </button>
+                </nav>
+                <!-- Main Header Button to Google Drive -->
+                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="px-4 py-2 text-[10px] font-cyberTech font-black bg-brandBlueLight text-brandBlueDark border-2 border-brandBlueBorder rounded-full hover:bg-brandBlueDark hover:text-white transition-all flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-brands fa-google-drive text-xs"></i> XEM BÀI TẬP TRÊN GG DRIVE
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 mt-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Left Sidebar: Expanded Premium Profile Card (Sub-cards deleted to maximize space) -->
+        <aside class="lg:col-span-1">
+            <div class="glowing-card p-6 relative overflow-hidden flex flex-col items-center justify-between min-h-[500px] lg:min-h-[580px]">
+                <!-- Camera focus corner brackets decoration -->
+                <span class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-brandBlueDark"></span>
+                <span class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-brandBlueDark"></span>
+                <span class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-brandBlueDark"></span>
+                <span class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-brandBlueDark"></span>
+
+                <div class="flex flex-col items-center text-center relative z-10 w-full my-auto">
+                    <!-- HUGE AVATAR WITHOUT BORDERS GAP -->
+                    <div class="relative mb-6">
+                        <div class="w-44 h-44 md:w-48 md:h-48 rounded-full border-4 border-brandBlueBorder shadow-lg overflow-hidden relative">
+                            <img src="Hình 1.jpg" alt="Avatar Lê Thu Hằng" class="w-full h-full object-cover object-center scale-125 transition-transform duration-500 hover:scale-135">
+                        </div>
+                        <span class="absolute -bottom-2 right-4 bg-brandBlueDark text-white text-[10px] font-cyberTech font-black px-3 py-1 rounded shadow-md tracking-wider">STRIKER / RANK #1</span>
+                    </div>
+                    
+                    <h2 class="font-serifClassic text-3xl font-bold tracking-wide text-cuteText italic">Lê Thu Hằng</h2>
+                    <p class="text-xs font-techSpecs text-cyan-600 tracking-widest mt-1 uppercase font-bold">Chinese Linguistics Strategist</p>
+                    <div class="star-trail my-6"></div>
+                    
+                    <!-- Expanded Specs Panel -->
+                    <div class="space-y-4 text-xs font-techSpecs tracking-wide text-cuteText w-full px-2 text-left">
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-gray-400 font-semibold">MÃ SỐ SINH VIÊN:</span>
+                            <span class="text-cuteText font-mono font-bold">25041630</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-gray-400 font-semibold">CHUYÊN NGÀNH:</span>
+                            <span class="text-cuteText font-bold text-right">Ngôn ngữ & VH Trung Quốc</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-gray-400 font-semibold">TRƯỜNG ĐẠI HỌC:</span>
+                            <span class="text-cuteText font-bold text-right">ĐH Ngoại ngữ - ĐHQGHN</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-gray-400 font-semibold">HỌC PHẦN:</span>
+                            <span class="text-cuteText font-bold text-right text-brandBlueDark">Công nghệ số & AI</span>
+                        </div>
+                        <div class="flex justify-between pt-1">
+                            <span class="text-gray-400 font-semibold">PHƯƠNG CHÂM:</span>
+                            <span class="text-brandBlueDark font-bold text-right">TỰ HỌC & THỰC HÀNH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="star-trail my-4"></div>
+                <div class="w-full text-center relative z-10 px-2">
+                    <p class="text-xs text-gray-500 italic leading-relaxed">"Học ngoại ngữ là để mở ra thế giới mới, còn công nghệ chính là người bạn đồng hành giúp mình đi xa hơn."</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Column: SPA Area -->
+        <section class="lg:col-span-3 flex flex-col gap-6">
+
+            <!-- ================= TAB: GIỚI THIỆU (HOME) ================= -->
+            <div id="section-home" class="tab-content block space-y-6">
+                
+                <!-- Large White Banner with Rin Card design rules -->
+                <div class="glowing-card p-8 overflow-hidden relative min-h-[280px] flex flex-col justify-between">
+                    <span class="absolute top-4 left-4 w-3.5 h-3.5 border-t-2 border-l-2 border-brandBlueDark/50"></span>
+                    <span class="absolute top-4 right-4 w-3.5 h-3.5 border-t-2 border-r-2 border-brandBlueDark/50"></span>
+                    
+                    <div class="absolute right-0 top-0 opacity-5 pointer-events-none translate-y-10">
+                        <i class="fa-solid fa-star-and-crescent text-[250px] text-brandBlueDark"></i>
+                    </div>
+
+                    <div class="relative z-10 max-w-xl">
+                        <span class="text-[10px] font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded">OVERVIEW PORTFOLIO</span>
+                        
+                        <h2 class="font-serifClassic text-4xl lg:text-5xl font-extrabold tracking-tight text-cuteText italic mt-4 leading-none">
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandBlueDark to-cyan-500">Lê Thu Hằng</span>
+                            <span class="block text-sm font-cyberTech tracking-widest text-brandBlueDark mt-2 uppercase">BLUE LOCK CHINESE LINGUIST</span>
+                        </h2>
+                        
+                        <p class="text-xs text-gray-500 leading-relaxed mt-6">
+                            Chào mọi người! Mình là <strong>Lê Thu Hằng</strong>, sinh viên chuyên ngành Ngôn ngữ và Văn hóa Trung Quốc tại Đại học Ngoại ngữ - ĐHQGHN. Vốn quen thuộc với sách vở và chữ viết cổ điển, thế giới Công nghệ số và AI ban đầu là một thử thách khá lớn đối với mình. 
+                            Nhưng lấy cảm hứng từ thế giới Blue Lock – nơi mỗi người phải tự khai phá 'vũ khí' và phá vỡ giới hạn cũ của bản thân, mình đã coi môn học này như một trận bóng thực thụ để rèn luyện tư duy thực chiến. Đây là nhật ký ghi lại hành trình từ những bước làm quen máy tính cơ bản nhất cho đến các kỹ năng phối hợp công cụ thông minh.
+                        </p>
+                    </div>
+
+                    <div class="star-trail mt-6"></div>
+                </div>
+
+                <!-- Popout Characters Showcase on White Background -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+                    
+                    <!-- Yoichi Isagi Card -->
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[200px] md:min-h-[240px]">
+                        <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
+                            <span class="text-[9px] font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-2 py-0.5 rounded">STRATEGIC THINKING</span>
+                            <h3 class="font-serifClassic text-lg font-bold text-cuteText italic">Yoichi Isagi</h3>
+                            <p class="text-[11px] text-gray-500 leading-relaxed">
+                                Người đồng hành hướng dẫn phương pháp **thích ứng** và **quy hoạch cấu trúc thư mục** đám mây khoa học nhất cho mọi môn học học đường.
+                            </p>
+                        </div>
+                        <!-- Adjusted to -bottom-3 and -bottom-4 to eliminate transparent border gaps -->
+                        <img src="YoichiIsagi.png" alt="Isagi Yoichi" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
+                    </div>
+
+                    <!-- Rin Itoshi Card -->
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[200px] md:min-h-[240px]">
+                        <div class="w-[50%] md:w-[55%] space-y-3 relative z-10">
+                            <span class="text-[9px] font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-2 py-0.5 rounded">ABSOLUTE PRECISION</span>
+                            <h3 class="font-serifClassic text-lg font-bold text-cuteText italic">Rin Itoshi</h3>
+                            <p class="text-[11px] text-gray-500 leading-relaxed">
+                                Người định hướng khả năng **truy vấn học thuật chuẩn xác** và **đánh giá nguồn tài liệu nghiêm ngặt** để loại bỏ mọi sai lệch thông tin.
+                            </p>
+                        </div>
+                        <img src="RinItoshi.png" alt="Rin Itoshi" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ================= TAB: DỰ ÁN HỌC TẬP (PROJECTS) ================= -->
+            <div id="section-projects" class="tab-content hidden space-y-6">
+                
+                <!-- White Project Sub-tabs Navigation -->
+                <div class="glowing-card p-3 flex flex-wrap gap-2 justify-center">
+                    <button onclick="switchProjectSubtab('task1')" id="subtab-task1" class="px-4 py-2 text-xs font-cyberTech font-bold text-gray-400 border-b-2 border-transparent hover:text-brandBlueDark transition-all project-subtab-active">NHIỆM VỤ 1</button>
+                    <button onclick="switchProjectSubtab('task2')" id="subtab-task2" class="px-4 py-2 text-xs font-cyberTech font-bold text-gray-400 border-b-2 border-transparent hover:text-brandBlueDark transition-all">NHIỆM VỤ 2</button>
+                    <button onclick="switchProjectSubtab('task3')" id="subtab-task3" class="px-4 py-2 text-xs font-cyberTech font-bold text-gray-400 border-b-2 border-transparent hover:text-brandBlueDark transition-all">NHIỆM VỤ 3</button>
+                    <button onclick="switchProjectSubtab('task4')" id="subtab-task4" class="px-4 py-2 text-xs font-cyberTech font-bold text-gray-400 border-b-2 border-transparent hover:text-brandBlueDark transition-all">NHIỆM VỤ 4</button>
+                    <button onclick="switchProjectSubtab('task5')" id="subtab-task5" class="px-4 py-2 text-xs font-cyberTech font-bold text-gray-400 border-b-2 border-transparent hover:text-brandBlueDark transition-all">NHIỆM VỤ 5</button>
+                    <button onclick="switchProjectSubtab('task6')" id="subtab-task6" class="px-4 py-2 text-xs font-cyberTech font-bold text-gray-400 border-b-2 border-transparent hover:text-brandBlueDark transition-all">NHIỆM VỤ 6</button>
+                </div>
+
+                <!-- SUBTAB CONTENT: TASK 1 (Quản lý tệp - Isagi Yoichi) -->
+                <div id="proj-task1" class="project-content block space-y-6 pt-6">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                            <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-folder-tree mr-1.5"></i> STAGE 1: FILE SYSTEM</span>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Gọn gàng từ nếp máy tính cá nhân</h3>
+                            <p class="text-xs text-gray-500">Bài tập đầu tiên rèn luyện cho mình thói quen ngăn nắp khi sử dụng máy tính. Thay vì lưu tệp lộn xộn ngoài Desktop, mình đã tự thiết lập lại cấu trúc lưu trữ khoa học.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                                <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl font-mono text-[10px] text-cuteText">
+                                    <div class="text-brandBlueDark font-bold mb-1"><i class="fa-solid fa-network-wired mr-1"></i>BẢN ĐỒ THƯ MỤC:</div>
+                                    <div>ULIS_25041630_LeThuHang_Nhom02/</div>
+                                    <div class="pl-2">└─ 01_CoBan_TepTin/</div>
+                                    <div class="pl-4 text-gray-500">└─ BaoCao_ToiUu_File.docx</div>
+                                </div>
+                                <div class="p-3 bg-brandLight rounded-xl border border-slate-200 text-[10px] text-gray-500 space-y-1 flex flex-col justify-between">
+                                    <div>
+                                        <h4 class="font-cyberTech text-brandBlueDark mb-1">Các thao tác thực hành:</h4>
+                                        <p>• Tạo thư mục gốc <span class="font-mono text-cyan-600 font-bold">ThucHanh_LeThuHang</span> trên ổ đĩa.</p>
+                                        <p>• Tạo văn bản nháp, đổi tên thành <span class="font-mono text-cyan-600 font-bold">GhiChuQuanTrong.txt</span>.</p>
+                                        <p>• Di chuyển, sao chép các tệp liên quan vào thư mục con <span class="font-mono text-cyan-600 font-bold">TaiLieu</span> gọn gàng.</p>
+                                    </div>
+                                    <!-- Embedded Link directly to Google Drive Folder -->
+                                    <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="mt-2 text-brandBlueDark font-bold hover:underline flex items-center gap-1">
+                                        <i class="fa-brands fa-google-drive"></i> Xem thư mục bài tập trên Drive
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="YoichiIsagi.png" alt="Isagi Yoichi" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
+                    </div>
+                </div>
+
+                <!-- SUBTAB CONTENT: TASK 2 (Truy vấn học thuật - Rin Itoshi) -->
+                <div id="proj-task2" class="project-content hidden space-y-6 pt-6">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                            <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-magnifying-glass mr-1.5"></i> STAGE 2: SEARCH STRATEGY</span>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Lọc tìm tri thức như một chuyên gia</h3>
+                            <p class="text-xs text-gray-550"><strong>Đề tài nghiên cứu chuyên sâu:</strong> "Nghiên cứu đối chiếu hành vi ngôn ngữ cầu khiến (Requesting/Ordering) trong tiếng Hán và tiếng Việt: Tiếp cận từ lý thuyết lịch sự và ngữ dụng học."</p>
+                            
+                            <div class="space-y-3 pt-2">
+                                <div class="bg-brandBlueLight p-3 rounded-xl border border-brandBlueBorder text-[10px] space-y-1">
+                                    <span class="font-cyberTech text-brandBlueDark uppercase tracking-wider block font-bold">Truy cập toàn diện qua 4 nguồn tư liệu:</span>
+                                    <p>• <strong>Dữ liệu lớn:</strong> Google Scholar, CNKI (hệ thống dữ liệu học thuật tiếng Trung lớn nhất), Luận văn ULIS.</p>
+                                    <p>• <strong>Tạp chí uy tín:</strong> Tạp chí Ngôn ngữ, Tạp chí KH Ngoại ngữ (ULIS), Journal of Pragmatics.</p>
+                                    <p>• <strong>Sách chuyên khảo:</strong> Giáo trình Ngữ dụng học của Đỗ Hữu Châu, Nguyễn Đức Dân, Brown & Levinson.</p>
+                                    <p>• <strong>Nguồn mở tin cậy:</strong> Working Papers từ ResearchGate và Academia.edu.</p>
+                                </div>
+                                <div class="overflow-x-auto border border-slate-200 rounded-xl text-[10px]">
+                                    <table class="w-full text-left">
+                                        <tr class="bg-brandLight text-brandBlueDark font-cyberTech border-b">
+                                            <th class="p-2">Tài liệu tham khảo / Tác giả</th>
+                                            <th class="p-2">Phương pháp nghiên cứu</th>
+                                            <th class="p-2">Đánh giá theo chuẩn Harvard</th>
+                                        </tr>
+                                        <tr class="text-gray-500">
+                                            <td class="p-2 font-bold text-cuteText">Nguyễn, V. H. (2022)</td>
+                                            <td class="p-2">Khảo sát định lượng 200 người thực tế.</td>
+                                            <td class="p-2">Số liệu thực nghiệm rõ ràng, mang tính cập nhật cao. (Xếp hạng: 5/5)</td>
+                                        </tr>
+                                        <tr class="text-gray-500">
+                                            <td class="p-2 font-bold text-cuteText">Pragmatics (Levinson, 1983)</td>
+                                            <td class="p-2">Lý thuyết ngữ dụng học nền tảng.</td>
+                                            <td class="p-2">Sách gốc kinh điển nhưng số liệu cũ, cần kết hợp tài liệu mới bổ trợ. (Xếp hạng: 4.5/5)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] text-brandBlueDark font-bold hover:underline">
+                                    <i class="fa-brands fa-google-drive"></i> Xem báo cáo tìm kiếm và tài liệu gốc trên Drive
+                                </a>
+                            </div>
+                        </div>
+                        <img src="RinItoshi.png" alt="Rin Itoshi" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
+                    </div>
+                </div>
+
+                <!-- SUBTAB CONTENT: TASK 3 (Prompt Engineering - Meguru Bachira) -->
+                <div id="proj-task3" class="project-content hidden space-y-6 pt-6">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                            <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-comment-dots mr-1.5"></i> STAGE 3: PROMPT ENGINEERING</span>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Luyện cách trò chuyện thông minh với AI</h3>
+                            <p class="text-xs text-gray-500">Đặt câu hỏi hời hợt chỉ nhận lại kết quả đại trà. Mình đã học cách thiết lập vai trò, bối cảnh và yêu cầu rõ ràng để AI cho ra kết quả xuất sắc:</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 text-[10px]">
+                                <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl space-y-1">
+                                    <span class="font-cyberTech text-brandBlueDark block font-bold">1. Tóm tắt Biến đổi khí hậu</span>
+                                    <p>• <strong>Prompt cơ bản:</strong> "Hãy tóm tắt bài viết sau..." chỉ nhận được một đoạn tóm tắt chung chung.</p>
+                                    <p class="text-gray-500">• <strong>Cải tiến:</strong> Ràng buộc dung lượng dưới 100 từ, chia rõ 4 phần: chủ đề, nguyên nhân, hậu quả và hướng giải quyết.</p>
+                                </div>
+                                <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl space-y-1">
+                                    <span class="font-cyberTech text-brandBlueDark block font-bold">2. Giải thích Machine Learning</span>
+                                    <p>• <strong>Prompt cơ bản:</strong> "Giải thích Machine Learning" trả về một đống khái niệm công nghệ khô khan.</p>
+                                    <p class="text-gray-500">• <strong>Cải tiến:</strong> Yêu cầu giải thích cho học sinh lớp 10 bằng ngôn ngữ bình dân kèm ví dụ thiết thực (Email spam, gợi ý video TikTok, nhận diện khuôn mặt).</p>
+                                </div>
+                                <div class="bg-brandBlueLight border border-brandBlueBorder p-3 rounded-xl space-y-1">
+                                    <span class="font-cyberTech text-brandBlueDark block font-bold">3. Tạo đề quang hợp Sinh học</span>
+                                    <p>• <strong>Prompt cơ bản:</strong> "Tạo câu hỏi quang hợp" cho ra danh sách câu hỏi rời rạc.</p>
+                                    <p class="text-gray-500">• <strong>Cải tiến:</strong> Gán vai giáo viên Sinh học THPT, phân loại đề thành 3 mức độ (Nhận biết, Thông hiểu, Vận dụng) kèm đáp án chi tiết.</p>
+                                </div>
+                            </div>
+                            <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] text-brandBlueDark font-bold hover:underline">
+                                <i class="fa-brands fa-google-drive"></i> Xem tệp tin nhật ký viết Prompt trên Drive
+                            </a>
+                        </div>
+                        <img src="MeguruBachira.png" alt="Meguru Bachira" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
+                    </div>
+                </div>
+
+                <!-- SUBTAB CONTENT: TASK 4 (Cộng tác nhóm - Seishiro Nagi) -->
+                <div id="proj-task4" class="project-content hidden space-y-6 pt-6">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                            <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-users mr-1.5"></i> STAGE 4: ONLINE COLLABORATION</span>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Làm việc nhóm nhịp nhàng trên không gian số</h3>
+                            <p class="text-xs text-gray-500"><strong>Dự án thực tế:</strong> "Ứng dụng AI học ngữ pháp" (Cùng nhóm nghiên cứu và phân tích phần mềm kiểm tra lỗi chính tả LanguageTool).</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 text-[10px]">
+                                <div class="bg-brandBlueLight p-2.5 rounded-xl border border-brandBlueBorder">
+                                    <span class="text-brandBlueDark font-cyberTech block mb-1">⚡ ĐANG LÀM</span>
+                                    <p class="font-bold text-cuteText">Dịch chương 1 điển tích văn học cổ</p>
+                                    <p class="text-gray-400">Phụ trách: Lê Thu Hằng</p>
+                                </div>
+                                <div class="bg-brandLight p-2.5 rounded-xl border border-slate-200">
+                                    <span class="text-green-600 font-cyberTech block mb-1">✓ HOÀN THÀNH</span>
+                                    <p class="font-bold text-cuteText">Thiết lập kế hoạch họp nhóm đám mây</p>
+                                    <p class="text-green-600"><i class="fa-solid fa-circle-check"></i> Đã phê duyệt</p>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="mt-2 text-brandBlueDark font-bold hover:underline flex items-center gap-1">
+                                    <i class="fa-brands fa-google-drive"></i> Xem báo cáo hợp tác nhóm trên Drive
+                                </a>
+                            </div>
+                        </div>
+                        <img src="SeishiroNagi.png" alt="Seishiro Nagi" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
+                    </div>
+                </div>
+
+                <!-- SUBTAB CONTENT: TASK 5 (Sáng tạo AI - Hyoma Chigiri) -->
+                <div id="proj-task5" class="project-content hidden space-y-6 pt-6">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                            <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> STAGE 5: GENERATIVE ART</span>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Sáng tạo nội dung số có trợ lực AI</h3>
+                            
+                            <div class="bg-brandBlueLight p-3 rounded-xl border border-brandBlueBorder text-[10px] space-y-1">
+                                <span class="font-cyberTech text-brandBlueDark block">Mẫu câu lệnh hình ảnh watercolor:</span>
+                                <p class="text-gray-500 italic">"An elite female Chinese translator standing inside a futuristic soccer stadium styled like Blue Lock neon aesthetic, neon cyan holographic Chinese characters..."</p>
+                            </div>
+                            <div class="pt-1">
+                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] text-brandBlueDark font-bold hover:underline">
+                                    <i class="fa-brands fa-google-drive"></i> Xem Infographic hoàn chỉnh trên Drive
+                                </a>
+                            </div>
+                        </div>
+                        <img src="HyomaChigiri.png" alt="Hyoma Chigiri" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
+                    </div>
+                </div>
+
+                <!-- SUBTAB CONTENT: TASK 6 (Đạo đức AI - Jinpachi Ego) -->
+                <div id="proj-task6" class="project-content hidden space-y-6 pt-6">
+                    <div class="glowing-card p-6 relative overflow-visible flex flex-row items-center justify-between min-h-[220px] md:min-h-[265px]">
+                        <div class="w-[50%] md:w-[55%] space-y-4 relative z-10">
+                            <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full"><i class="fa-solid fa-shield-halved mr-1.5"></i> STAGE 6: ETHICS & RESPONSIBILITY</span>
+                            <h3 class="font-serifClassic text-2xl font-bold text-cuteText italic">Cam kết Đạo đức sử dụng AI</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 text-[10px]">
+                                <div class="p-3 bg-white border-l-4 border-l-brandBlueDark border border-slate-200 rounded-xl">
+                                    <span class="font-cyberTech text-brandBlueDark block mb-0.5">1. MINH BẠCH</span>
+                                    <p class="text-gray-500 leading-relaxed">Luôn trích dẫn rõ ràng dứt khoát các phần văn bản được AI hỗ trợ.</p>
+                                </div>
+                                <div class="p-3 bg-white border-l-4 border-l-brandBlueDark border border-slate-200 rounded-xl">
+                                    <span class="font-cyberTech text-brandBlueDark block mb-0.5">2. KIỂM CHỨNG</span>
+                                    <p class="text-gray-500 leading-relaxed">Con người luôn đóng vai trò kiểm duyệt và chịu trách nhiệm học thuật.</p>
+                                </div>
+                            </div>
+                            <div class="pt-1">
+                                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="inline-flex items-center gap-1.5 text-[10px] text-brandBlueDark font-bold hover:underline">
+                                    <i class="fa-brands fa-google-drive"></i> Xem bản quy tắc đạo đức AI trên Drive
+                                </a>
+                            </div>
+                        </div>
+                        <img src="JinpachiEgo.png" alt="Jinpachi Ego" class="absolute -bottom-3 md:-bottom-4 right-0 h-[115%] md:h-[135%] w-[45%] md:w-[40%] object-contain object-bottom object-right pointer-events-none z-20 char-popout">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ================= TAB: TỔNG KẾT & SUY NGẪM (REFLECTION) ================= -->
+            <div id="section-reflection" class="tab-content hidden space-y-6">
+                <!-- Large Post-Match Interview Box -->
+                <div class="glowing-card p-8 relative overflow-hidden">
+                    <span class="absolute top-4 left-4 w-3.5 h-3.5 border-t-2 border-l-2 border-brandBlueDark/50"></span>
+                    <span class="absolute top-4 right-4 w-3.5 h-3.5 border-t-2 border-r-2 border-brandBlueDark/50"></span>
+
+                    <span class="text-xs font-cyberTech text-brandBlueDark bg-brandBlueLight border border-brandBlueBorder px-3 py-1 rounded-full">✨ POST-MATCH DEBRIEFING ✨</span>
+                    <h2 class="font-serifClassic text-3xl font-bold italic text-cuteText mt-4 mb-6">Nhìn nhận lại hành trình mài giũa bản ngã số</h2>
+                    
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        Trải qua chặng đường hoàn thành học phần Công nghệ số và AI, mình tự hào nhận ra bản thân đã gặt hái được những chuyển hóa ý nghĩa. Từ một sinh viên ngôn ngữ đôi lúc còn e ngại trước thế giới công nghệ khô khan, mình đã dũng cảm học cách làm bạn và biến AI thành người đồng đội đắc lực để học tập cẩn trọng và hiệu quả hơn.
+                    </p>
+
+                    <div class="star-trail my-6"></div>
+
+                    <!-- 3 Pillars of Reflection -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                        <div class="p-4 bg-brandBlueLight rounded-2xl border border-brandBlueBorder">
+                            <span class="text-brandBlueDark font-cyberTech block mb-1">01. THÀNH QUẢ ĐẠT ĐƯỢC</span>
+                            <p class="text-gray-500 leading-relaxed">Nắm vững phương thức truy vấn thông tin nâng cao, làm chủ kỹ năng thiết kế chỉ dẫn prompt chuyên nghiệp và học cách quản lý kế hoạch nhóm.</p>
+                        </div>
+                        <div class="p-4 bg-brandBlueLight rounded-2xl border border-brandBlueBorder">
+                            <span class="text-brandBlueDark font-cyberTech block mb-1">02. THÁCH THỨC VƯỢT QUA</span>
+                            <p class="text-gray-500 leading-relaxed">Đã từng loay hoay trong việc kiểm chứng tính chính xác của dữ liệu AI, nhưng sự tỉ mỉ của sinh viên ngoại ngữ đã giúp mình hóa giải thành công.</p>
+                        </div>
+                        <div class="p-4 bg-brandBlueLight rounded-2xl border border-brandBlueBorder">
+                            <span class="text-brandBlueDark font-cyberTech block mb-1">03. ĐỊNH HƯỚNG TƯƠNG LAI</span>
+                            <p class="text-gray-500 leading-relaxed">Tiếp tục cập nhật cuốn Digital Portfolio này như một minh chứng cho nỗ lực chuyển đổi số bền bỉ tại ULIS.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 border-t-2 border-slate-100 bg-white py-6 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-[10px] font-techSpecs text-gray-400 tracking-widest uppercase">
+                DIGITAL PORTFOLIO SÁNG TẠO CỦA LÊ THU HẰNG © 2026 ✿ BLUE LOCK ACADEMY WHITE-BLUE VERSION.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Canvas & Tab Switching Logic -->
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(element => {
+                element.classList.add('hidden');
+                element.classList.remove('block');
+            });
+            document.querySelectorAll('nav button').forEach(button => {
+                button.classList.remove('nav-btn-active', 'tab-active');
+            });
+
+            const activeSection = document.getElementById('section-' + tabId);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+                activeSection.classList.add('block');
+            }
+            const activeButton = document.getElementById('tab-' + tabId);
+            if (activeButton) {
+                activeButton.classList.add('nav-btn-active', 'tab-active');
+            }
+        }
+
+        // Sub-tabs for Projects tasks
+        function switchProjectSubtab(subtaskId) {
+            document.querySelectorAll('.project-content').forEach(element => {
+                element.classList.add('hidden');
+                element.classList.remove('block');
+            });
+            document.querySelectorAll('#section-projects button').forEach(button => {
+                button.classList.remove('project-subtab-active');
+            });
+
+            const activeTask = document.getElementById('proj-' + subtaskId);
+            if (activeTask) {
+                activeTask.classList.remove('hidden');
+                activeTask.classList.add('block');
+            }
+            const activeBtn = document.getElementById('subtab-' + subtaskId);
+            if (activeBtn) {
+                activeBtn.classList.add('project-subtab-active');
+            }
+        }
+
+        // Beautiful Soft Sparkles Canvas Animation on White Background
+        const canvas = document.getElementById('sparkleCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 30;
+
+        class Sparkle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.radius = Math.random() * 4 + 1.5;
+                this.speedY = Math.random() * 0.15 + 0.05;
+                this.speedX = Math.random() * 0.1 - 0.05;
+                this.opacity = Math.random() * 0.3 + 0.1;
+                this.color = '#38BDF8'; // Soft sky blue sparkle
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -this.radius) {
+                    this.y = height + this.radius;
+                    this.x = Math.random() * width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Sparkle());
+        }
+
+        function drawSparkles() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(drawSparkles);
+        }
+
+        drawSparkles();
+    </script>
+</body>
+</html>
