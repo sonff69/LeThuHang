@@ -137,112 +137,74 @@
                 </div>
             </div>
             
-            <!-- White/Blue Dashboard Navigation + Google Drive Button -->
-            <div class="flex flex-col sm:flex-row items-center gap-4">
-                <nav class="flex gap-2">
-                    <button onclick="switchTab('home')" id="tab-home" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all tab-active flex items-center gap-2">
-                        <span>[</span> GIỚI THIỆU <span>]</span>
-                    </button>
-                    <button onclick="switchTab('projects')" id="tab-projects" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
-                        <span>[</span> DỰ ÁN HỌC TẬP <span>]</span>
-                    </button>
-                    <button onclick="switchTab('reflection')" id="tab-reflection" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
-                        <span>[</span> TỔNG KẾT & SUY NGẪM <span>]</span>
-                    </button>
-                </nav>
-                <!-- Main Header Button to Google Drive -->
-                <a href="https://drive.google.com/drive/folders/1DKjjlC2xrnn804NQu8NShuFZqWprUjaq" target="_blank" class="px-4 py-2 text-[10px] font-cyberTech font-black bg-brandBlueLight text-brandBlueDark border-2 border-brandBlueBorder rounded-full hover:bg-brandBlueDark hover:text-white transition-all flex items-center gap-1.5 shadow-sm">
-                    <i class="fa-brands fa-google-drive text-xs"></i> XEM BÀI TẬP TRÊN GG DRIVE
-                </a>
-            </div>
+            <!-- White/Blue Dashboard Navigation -->
+            <nav class="flex gap-2">
+                <button onclick="switchTab('home')" id="tab-home" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all tab-active flex items-center gap-2">
+                    <span>[</span> GIỚI THIỆU <span>]</span>
+                </button>
+                <button onclick="switchTab('projects')" id="tab-projects" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
+                    <span>[</span> DỰ ÁN HỌC TẬP <span>]</span>
+                </button>
+                <button onclick="switchTab('reflection')" id="tab-reflection" class="px-5 py-2 text-xs font-cyberTech font-bold text-gray-400 hover:text-brandBlueDark border-b-2 border-transparent transition-all flex items-center gap-2">
+                    <span>[</span> TỔNG KẾT & SUY NGẪM <span>]</span>
+                </button>
+            </nav>
         </div>
     </header>
 
     <!-- Main Content Container -->
     <main class="max-w-7xl mx-auto px-4 mt-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
         
-        <!-- Left Sidebar: Rich Student Specs Card -->
-        <aside class="lg:col-span-1 flex flex-col gap-6">
-            
-            <!-- Profile Info with camera bracket design -->
-            <div class="glowing-card p-6 relative overflow-hidden">
+        <!-- Left Sidebar: Expanded Premium Profile Card (Sub-cards deleted to maximize space) -->
+        <aside class="lg:col-span-1">
+            <div class="glowing-card p-6 relative overflow-hidden flex flex-col items-center justify-between min-h-[500px] lg:min-h-[580px]">
                 <!-- Camera focus corner brackets decoration -->
-                <span class="absolute top-4 left-4 w-3.5 h-3.5 border-t-2 border-l-2 border-brandBlueDark/50"></span>
-                <span class="absolute top-4 right-4 w-3.5 h-3.5 border-t-2 border-r-2 border-brandBlueDark/50"></span>
-                <span class="absolute bottom-4 left-4 w-3.5 h-3.5 border-b-2 border-l-2 border-brandBlueDark/50"></span>
-                <span class="absolute bottom-4 right-4 w-3.5 h-3.5 border-b-2 border-r-2 border-brandBlueDark/50"></span>
+                <span class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-brandBlueDark"></span>
+                <span class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-brandBlueDark"></span>
+                <span class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-brandBlueDark"></span>
+                <span class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-brandBlueDark"></span>
 
-                <div class="flex flex-col items-center text-center relative z-10">
+                <div class="flex flex-col items-center text-center relative z-10 w-full my-auto">
+                    <!-- HUGE AVATAR WITHOUT BORDERS GAP -->
                     <div class="relative mb-6">
-                        <!-- Holographic border for Avatar loaded from Hình 1.jpg (p-1 removed, scale-125 applied) -->
-                        <div class="w-28 h-28 rounded-full border-2 border-brandBlueBorder shadow-md overflow-hidden relative">
-                            <img src="Hình 1.jpg" alt="Avatar Lê Thu Hằng" class="w-full h-full object-cover object-center scale-125">
+                        <div class="w-44 h-44 md:w-48 md:h-48 rounded-full border-4 border-brandBlueBorder shadow-lg overflow-hidden relative">
+                            <img src="Hình 1.jpg" alt="Avatar Lê Thu Hằng" class="w-full h-full object-cover object-center scale-125 transition-transform duration-500 hover:scale-135">
                         </div>
-                        <span class="absolute -bottom-1 -right-1 bg-brandBlueDark text-white text-[9px] font-cyberTech font-black px-2.5 py-0.5 rounded shadow">STRIKER</span>
+                        <span class="absolute -bottom-2 right-4 bg-brandBlueDark text-white text-[10px] font-cyberTech font-black px-3 py-1 rounded shadow-md tracking-wider">STRIKER / RANK #1</span>
                     </div>
                     
-                    <h2 class="font-serifClassic text-2xl font-bold tracking-wide text-cuteText italic">Lê Thu Hằng</h2>
-                    <p class="text-[10px] font-techSpecs text-cyan-600 tracking-widest mt-1 uppercase">Chinese Linguistics Strategist</p>
-                    <div class="star-trail my-4"></div>
+                    <h2 class="font-serifClassic text-3xl font-bold tracking-wide text-cuteText italic">Lê Thu Hằng</h2>
+                    <p class="text-xs font-techSpecs text-cyan-600 tracking-widest mt-1 uppercase font-bold">Chinese Linguistics Strategist</p>
+                    <div class="star-trail my-6"></div>
+                    
+                    <!-- Expanded Specs Panel -->
+                    <div class="space-y-4 text-xs font-techSpecs tracking-wide text-cuteText w-full px-2 text-left">
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-gray-400 font-semibold">STUDENT ID:</span>
+                            <span class="text-cuteText font-mono font-bold">25041630</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-gray-400 font-semibold">DEPARTMENT:</span>
+                            <span class="text-cuteText font-bold text-right">Ngôn ngữ & VH Trung Quốc</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-gray-400 font-semibold">UNIVERSITY:</span>
+                            <span class="text-cuteText font-bold text-right">ĐH Ngoại ngữ - ĐHQGHN</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-gray-400 font-semibold">HỌC PHẦN:</span>
+                            <span class="text-cuteText font-bold text-right text-brandBlueDark">Công nghệ số & AI</span>
+                        </div>
+                        <div class="flex justify-between pt-1">
+                            <span class="text-gray-400 font-semibold">VŨ KHÍ ĐẶC QUYỀN:</span>
+                            <span class="text-brandBlueDark font-black font-cyberTech text-right">PRECISION & SYNTAX</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Specs Panel -->
-                <div class="space-y-3 text-xs font-techSpecs tracking-wide text-cuteText">
-                    <div class="flex justify-between border-b border-slate-100 pb-1.5">
-                        <span class="text-gray-400">STUDENT ID:</span>
-                        <span class="text-cuteText font-mono font-bold">25041630</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-100 pb-1.5">
-                        <span class="text-gray-400">DEPARTMENT:</span>
-                        <span class="text-cuteText text-right font-semibold">Ngôn ngữ & VH Trung Quốc</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-100 pb-1.5">
-                        <span class="text-gray-400">UNIVERSITY:</span>
-                        <span class="text-cuteText text-right font-medium">ĐH Ngoại ngữ - ĐHQGHN</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-400 text-cyan-600">EGO RATING:</span>
-                        <span class="text-brandBlueDark font-bold font-cyberTech">RANK #1</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Beautiful Dialogue / Sticker Card -->
-            <div class="glowing-card p-5 overflow-hidden">
-                <i class="fa-solid fa-quote-left absolute -left-2 -top-2 text-cyan-100 text-6xl pointer-events-none"></i>
-                <h4 class="font-serifClassic text-sm text-brandBlueDark italic mb-2">✦ "The battlefield dictates..."</h4>
-                <p class="text-xs text-gray-500 leading-relaxed italic">
-                    "Trong hành trình khám phá ngôn ngữ và khoa học số, sự chi tiết và kỷ luật tuyệt đối chính là vũ khí giúp bạn kiến tạo nên những thành tựu tuyệt vời nhất."
-                </p>
-                <div class="star-trail my-3"></div>
-                <div class="text-right text-[9px] font-techSpecs text-cyan-600 uppercase tracking-widest">- RIN ITOSHI CO-WORKER</div>
-            </div>
-
-            <!-- Progress Specs Panel -->
-            <div class="glowing-card p-5">
-                <h3 class="text-xs font-cyberTech text-brandBlueDark tracking-wider mb-4 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 bg-brandBlueDark rounded-full"></span>
-                    <span>COGNITIVE CAPABILITIES</span>
-                </h3>
-                <div class="space-y-3">
-                    <div>
-                        <div class="flex justify-between text-xs font-techSpecs mb-1">
-                            <span class="text-gray-400">Linguistic Precision (Độ chính xác)</span>
-                            <span class="text-brandBlueDark font-bold">95%</span>
-                        </div>
-                        <div class="w-full bg-slate-100 h-1.5 rounded overflow-hidden border border-slate-200">
-                            <div class="bg-brandBlueDark h-full" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-xs font-techSpecs mb-1">
-                            <span class="text-gray-400">AI Prompting Structure (Thiết lập lệnh)</span>
-                            <span class="text-brandBlueDark font-bold">92%</span>
-                        </div>
-                        <div class="w-full bg-slate-100 h-1.5 rounded overflow-hidden border border-slate-200">
-                            <div class="bg-brandBlueDark h-full" style="width: 92%"></div>
-                        </div>
-                    </div>
+                <div class="star-trail my-4"></div>
+                <div class="w-full text-center relative z-10">
+                    <p class="text-[10px] text-gray-450 italic">"Sách vở mở ra tri thức, công nghệ chắp cánh bản ngã."</p>
                 </div>
             </div>
         </aside>
